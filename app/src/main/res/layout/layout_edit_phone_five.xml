@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_marginTop="96dp"
+      android:layout_marginBottom="47dp"
+      android:gravity="center">
+      <ImageView
+          android:layout_width="45dp"
+          android:layout_height="45dp"
+          android:src="@drawable/sign_state_ok"
+          android:layout_marginRight="22px"/>
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="#14101e"
+          android:text="恭喜您，更换手机号码成功"/>
+  </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dip"
+        android:layout_marginRight="20dip"
+        android:background="@drawable/longbutton3x"
+        android:gravity="center"
+        android:paddingBottom="10dip"
+        android:text="重新登录"
+        android:textColor="@color/fff_btn_color"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+</LinearLayout>

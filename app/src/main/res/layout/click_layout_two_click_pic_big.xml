@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="40dp">
+
+    <RelativeLayout
+        android:layout_width="250dp"
+        android:layout_height="150dp"
+
+        android:background="@drawable/n_small_bg">
+
+        <LinearLayout
+            android:id="@+id/ll_choose2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_click_pic"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="24dp"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/tv_choose2"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="6dp"
+                android:text="冰淇淋"
+                android:textColor="@color/paint_textcolor"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- android:layout_marginBottom="50dp"
+            android:layout_marginRight="50dp"-->
+        <!--        android:visibility="gone"-->
+        <RelativeLayout
+            android:id="@+id/rl_hand"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+
+            <com.easychange.admin.smallrain.views.WaveCircleView
+                android:id="@+id/wave_cirlce_view"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerInParent="true" />
+
+            <ImageView
+                android:id="@+id/iv_point"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="12dp"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/shouzhi" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

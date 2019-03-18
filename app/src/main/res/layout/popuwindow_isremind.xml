@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="80dip"
+    android:alpha="0.7">
+    <RelativeLayout
+        android:id="@+id/rl_isrmind"
+        android:layout_width="match_parent"
+        android:layout_height="80dip">
+
+        <TextView
+            android:id="@+id/tv_title"
+            style="@style/style_fffdec_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:layout_marginHorizontal="17dp"
+            android:textSize="14sp"
+            android:text="您可以和孩子一起先体验训练，在进入正式的个性化训练课前，您需要先完善儿童信息。"
+
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_experience"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:background="@drawable/long_text_button_bg"
+                    android:paddingBottom="8dp"
+                    android:text="立即体验产品"
+                    android:textSize="15sp"
+                    android:textColor="@color/white" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:gravity="center"
+
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_finishmessage"
+                    android:layout_width="114dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/long_text_button_bg"
+                    android:paddingBottom="8dp"
+                    android:text="完善儿童信息"
+                    android:textSize="15sp"
+                    android:textColor="@color/white" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

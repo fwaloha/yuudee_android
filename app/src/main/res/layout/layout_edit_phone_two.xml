@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/layout_pt_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dip"
+            android:layout_marginTop="15dip"
+            android:gravity="center"
+            android:text="更换手机号码"
+            android:textColor="#14101e"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dip"
+            android:layout_marginRight="27dip"
+            android:layout_marginTop="30dip"
+            android:background="@drawable/border_edt_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/et_one"
+                android:layout_width="match_parent"
+                android:layout_height="43dip"
+                android:background="@null"
+                android:drawableLeft="@drawable/yanzhengma"
+                android:drawablePadding="12dip"
+                android:hint="请输入短信验证码"
+                android:inputType="number"
+                android:maxLength="6"
+                android:paddingLeft="15dip"
+                android:textColor="@color/text_tu"
+                android:textColorHint="@color/text_tu"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_get_code"
+                android:layout_width="wrap_content"
+                android:layout_height="43dip"
+                android:layout_alignParentRight="true"
+                android:gravity="center_vertical"
+                android:paddingRight="34px"
+                android:text="重新获取"
+                android:textColor="#b5ada5"
+                android:textSize="13sp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_describe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:gravity="right"
+            android:paddingRight="43dp"
+            android:textColor="#b5ada5"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/tv_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="75dip"
+            android:background="@drawable/longbutton3x"
+            android:gravity="center"
+            android:paddingBottom="10dip"
+            android:text="下一步"
+            android:textColor="#b5ada5"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+</LinearLayout>

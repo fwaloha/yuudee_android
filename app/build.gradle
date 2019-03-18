@@ -1,0 +1,131 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
+    defaultConfig {
+        applicationId "com.guo.qlzx.sharecar"
+        minSdkVersion 17
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    android{
+        defaultConfig {
+            multiDexEnabled true
+        }
+    }
+
+    signingConfigs {
+        config {
+            keyAlias 'gc'
+            keyPassword '775521'
+            storeFile file('yaofenle.jks')
+            storePassword '775521'
+        }
+        debug {
+            keyAlias "gc"
+            keyPassword "775521"
+            storeFile file("yaofenle.jks")
+            storePassword "775521"
+        }
+    }
+//    signingConfigs {
+//        release {
+//            storeFile file("xiaoyudi.jks")
+//            storePassword "123456"
+//            keyAlias "123456"
+//            keyPassword "123456"
+//        }
+//    }
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.config
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dexOptions {
+        dexInProcess true
+        preDexLibraries true
+        javaMaxHeapSize "6g"//越大越好
+        //  incremental true
+    }
+    buildToolsVersion '27.0.3'
+    //避开图片检查，打包的时候老是报aapt
+    aaptOptions.cruncherEnabled = false
+    aaptOptions.useNewCruncher = false
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.xw.repo:fillblankview:2.1@aar'
+    api 'com.githang:status-bar-compat:latest.integration'
+    //    这2个是图表库
+    implementation 'com.github.PhilJay:MPAndroidChart-Realm:v2.0.2@aar'
+    implementation project(':MPChartLib')
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    //    compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'//没有使用特殊Header，可以不加这行
+    implementation 'com.github.bumptech.glide:glide:4.4.0'
+    implementation project(':library')
+    implementation 'com.google.code.gson:gson:2.7'
+    implementation('com.github.gzu-liyujiang.AndroidPicker:WheelPicker:latest.release') {
+        exclude group: 'com.android.support'
+    }
+    implementation 'me.leefeng:citypicker:1.0'
+    implementation project(':mylibrary')
+    //必须使用
+    //    compile 'com.lzy.net:okgo:3.0.4'
+    // 烘箱 oKhttp
+    implementation 'com.github.franmontiel:PersistentCookieJar:v0.9.3'
+    //    compile 'com.zhy:okhttputils:2.6.2'
+    implementation('com.zhy:okhttputils:2.6.2') {
+        exclude group: 'com.squareup.okhttp3'
+    }
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    //eventbus
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    //glide
+//    implementation 'com.github.bumptech.glide:glide:4.8.0'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.github.wildma:PictureSelector:1.0.0'
+    implementation files('libs/jcore-android-1.2.6.jar')
+    implementation files('libs/jpush-android-3.1.7.jar')
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation files('libs/umeng-share-core-6.9.4.jar')
+    implementation files('libs/umeng-share-QQ-simplify-6.9.4.jar')
+    implementation files('libs/umeng-share-wechat-simplify-6.9.4.jar')
+    implementation files('libs/umeng-shareboard-widget-6.9.4.jar')
+    implementation files('libs/umeng-sharetool-6.9.4.jar')
+    implementation files('libs/umeng-common-1.5.4.jar')
+
+    implementation 'com.zhy:percent-support-extends:1.1.1'
+
+    implementation 'com.tencent.bugly:crashreport:latest.release'
+    //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
+    implementation 'com.tencent.bugly:nativecrashreport:latest.release'
+    //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+
+}

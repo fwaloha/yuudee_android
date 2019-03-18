@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <com.easychange.admin.smallrain.views.NoScrollViewPager
+            android:id="@+id/act_main_vp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        <RelativeLayout
+            android:id="@+id/rl_isrmind"
+            android:visibility="gone"
+            android:background="#80000000"
+            android:layout_width="match_parent"
+            android:layout_height="90dip">
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/style_fffdec_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginHorizontal="17dp"
+                android:textSize="14sp"
+                android:text="您可以和孩子一起先体验训练，在进入正式的个性化训练课前，您需要先完善儿童信息。"
+
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_title"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_experience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:background="@drawable/long_text_button_bg"
+                        android:paddingBottom="8dp"
+                        android:text="立即体验产品"
+                        android:textSize="15sp"
+                        android:textColor="@color/white" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:gravity="center"
+
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_finishmessage"
+                        android:layout_width="114dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/long_text_button_bg"
+                        android:paddingBottom="8dp"
+                        android:text="完善儿童信息"
+                        android:textSize="15sp"
+                        android:textColor="@color/white" />
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+    </FrameLayout>
+
+    <RelativeLayout
+
+        android:background="@drawable/family_bg33x"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dip"
+            android:orientation="horizontal"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip">
+
+            <Button
+                android:textStyle="bold"
+                android:id="@+id/btn_top_one"
+                android:layout_width="0dp"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:background="@drawable/button3x"
+                android:paddingBottom="5dp"
+                android:text="产品介绍"
+                android:textColor="@color/white"
+                android:textSize="14dip"
+                android:visibility="visible" />
+
+            <Button
+                android:textStyle="bold"
+                android:id="@+id/btn_top_two"
+                android:layout_width="0dp"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:background="@drawable/button3x"
+                android:paddingBottom="5dp"
+                android:text="训练档案"
+                android:textColor="@color/white"
+                android:textSize="14dip"
+                android:visibility="invisible" />
+
+            <Button
+                android:textStyle="bold"
+                android:id="@+id/btn_top_three"
+                android:layout_width="0dp"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:background="@drawable/button3x"
+                android:paddingBottom="5dp"
+                android:text="评估评测"
+                android:textColor="@color/white"
+                android:textSize="14dip"
+                android:visibility="invisible" />
+
+            <Button
+                android:textStyle="bold"
+                android:id="@+id/btn_top_four"
+                android:layout_width="0dp"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:background="@drawable/button3x"
+                android:paddingBottom="5dp"
+                android:text="更多"
+                android:textColor="@color/white"
+                android:textSize="14dip"
+                android:visibility="invisible" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:paddingLeft="15dip"
+            android:paddingRight="15dip">
+
+            <Button
+                android:visibility="invisible"
+                android:textStyle="bold"
+                android:id="@+id/btn_bottom_one"
+                android:layout_width="0dp"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:background="@drawable/button3x"
+                android:paddingBottom="5dp"
+                android:text="产品介绍"
+                android:textColor="@color/home_text"
+                android:textSize="14dip" />
+
+            <Button
+                android:textStyle="bold"
+                android:id="@+id/btn_bottom_two"
+                android:layout_width="0dp"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:background="@drawable/button3x"
+                android:paddingBottom="5dp"
+                android:text="训练档案"
+                android:textColor="@color/home_text"
+                android:textSize="14dip" />
+
+            <Button
+                android:textStyle="bold"
+                android:id="@+id/btn_bottom_three"
+                android:layout_width="0dp"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:background="@drawable/button3x"
+                android:paddingBottom="5dp"
+                android:text="评估评测"
+                android:textColor="@color/home_text"
+                android:textSize="14dip" />
+
+            <Button
+                android:textStyle="bold"
+                android:id="@+id/btn_bottom_four"
+                android:layout_width="0dp"
+                android:layout_height="40dip"
+                android:layout_weight="1"
+                android:background="@drawable/button3x"
+                android:paddingBottom="5dp"
+                android:text="更多"
+                android:textColor="@color/home_text"
+                android:textSize="14dip" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

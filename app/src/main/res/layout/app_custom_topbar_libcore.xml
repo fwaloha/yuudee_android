@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/mainItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topbar_height_libcore"
+        android:background="#FFFFFF">
+
+        <!-- android:background="@drawable/back_layout_selector" -->
+
+        <LinearLayout
+            android:id="@+id/topbarLeftLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables">
+
+            <ImageView
+                android:id="@+id/topbarLeftBackImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6dp"
+                android:src="@drawable/left_arrows"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/topbarLeftBackTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:ellipsize="end"
+                android:lines="1"
+                android:singleLine="true"
+                android:text="返回"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/text_big_libcore"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/topbarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:lines="1"
+            android:maxLength="12"
+            android:singleLine="true"
+            android:text=""
+            android:textColor="@color/lib_color_black"
+            android:textSize="17.0dp" />
+
+        <LinearLayout
+            android:id="@+id/rightLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="6dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/topbarRightImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@color/color_transparent_libcore"
+                android:gravity="center"
+                android:visibility="gone"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/topbarRightTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="16dp"
+                android:visibility="visible" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#a9a9a9"
+        android:visibility="gone" />
+
+</LinearLayout>

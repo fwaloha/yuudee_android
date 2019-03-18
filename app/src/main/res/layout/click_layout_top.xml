@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:clickable="true"
+        android:id="@+id/rl_click_layout"
+        android:layout_width="90dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/n_small_bg">
+
+        <LinearLayout
+            android:clickable="false"
+            android:id="@+id/ll_choose2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/iv_click_pic"
+                android:layout_width="47dp"
+                android:layout_height="47dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="17dp"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/tv_choose2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="冰淇淋"
+                android:textColor="@color/paint_textcolor"
+                android:textStyle="bold" />
+        </LinearLayout>
+        <!--   android:visibility="gone"-->
+        <RelativeLayout
+            android:clickable="false"
+            android:id="@+id/rl_hand"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+            <!--   android:visibility="gone"-->
+
+            <com.easychange.admin.smallrain.views.WaveCircleView
+                android:id="@+id/wave_cirlce_view"
+                android:layout_width="76dp"
+                android:layout_height="76dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp" />
+
+            <ImageView
+                android:id="@+id/iv_point"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                android:src="@drawable/shouzhi" />
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

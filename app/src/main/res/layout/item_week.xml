@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_item_week_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+
+            <!--<ImageView
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginLeft="17dp"
+                android:background="#14101e" />-->
+
+            <ImageView
+                android:layout_width="5dp"
+                android:layout_height="5dp"
+                android:layout_marginLeft="17dp"
+                android:background="@drawable/circle_point"
+                android:scaleType="fitXY" />
+
+            <TextView
+                android:id="@+id/tv_week"
+                style="@style/style_14101e_14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+
+                />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp">
+
+            <TextView
+                android:id="@+id/tv_right"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="38dp"
+                android:layout_marginTop="5dp"
+                android:text="测试正确率 / 百分比"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_below="@+id/tv_right"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="10dp"
+                android:visibility="visible">
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/linechart1"
+                    android:layout_width="match_parent"
+                    android:layout_height="145dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="3dp" />
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="9dp"
+                    android:background="#000000"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="10dp"
+                    android:text="训练次数 / 次"
+                    android:layout_marginBottom="13dp"
+                    android:textColor="@color/black"
+                    android:textSize="11sp"
+                    />
+                <LinearLayout
+                    android:layout_width="20dp"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_linear"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="top|center"
+
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingBottom="3dp"
+                            android:visibility="invisible"
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingTop="5dp"
+                            android:visibility="invisible"
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingTop="5dp"
+                            android:visibility="invisible"
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="bottom|center"
+                            android:text="0"
+                            android:visibility="gone"
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="#000000"></View>
+                </LinearLayout>
+            </FrameLayout>
+
+            <com.easychange.admin.smallrain.views.ChartView
+                android:id="@+id/chartviewweekone"
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_below="@+id/tv_right"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="3dp"
+                android:visibility="gone"
+                app:interval="50dp"
+                app:isScroll="false"
+                app:linecolor="#02bbb7"
+                app:xylinecolor="#000000"
+                app:xylinewidth="2dp"
+                app:xytextcolor="#7e7e7e"
+                app:xytextsize="12sp" />
+
+
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="7dp"
+            android:layout_height="150dp">
+
+            <TextView
+                android:id="@+id/tv_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="38dp"
+                android:text="学习时间 / 分钟"
+                android:textColor="@color/black"
+                android:textSize="11sp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:layout_below="@+id/tv_minute"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="3dp" >
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/linechart2"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="3dp"
+                    android:layout_height="145dp" />
+                <View
+                    android:layout_width="20dp"
+                    android:layout_height="2dp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="9dp"
+                    android:background="#000000"
+                    />
+                <LinearLayout
+                    android:layout_width="20dp"
+                    android:layout_height="110dp"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_linear1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="top|center"
+
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingBottom="3dp"
+
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+
+                            android:paddingTop="5dp"
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:paddingTop="5dp"
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="22dp"
+                            android:layout_weight="1"
+                            android:gravity="bottom|center"
+                            android:text="0"
+                            android:visibility="invisible"
+                            android:textColor="#000000"
+                            android:textSize="8sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:background="#000000"></View>
+                </LinearLayout>
+            </FrameLayout>
+
+            <com.easychange.admin.smallrain.views.ChartView
+                android:id="@+id/chartviewweektwo"
+                android:layout_width="match_parent"
+                android:layout_height="145dp"
+                android:layout_below="@+id/tv_minute"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="3dp"
+                android:visibility="gone"
+                app:interval="50dp"
+                app:isScroll="false"
+                app:linecolor="#02bbb7"
+                app:xylinecolor="#000000"
+                app:xylinewidth="2dp"
+                app:xytextcolor="#7e7e7e"
+                app:xytextsize="12sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

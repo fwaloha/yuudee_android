@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_popuwindow"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/xiaoguo_bg"
+    android:orientation="vertical">
+<!--新雨滴产品使用说明-->
+    <RelativeLayout
+        android:id="@+id/ll1"
+        android:layout_width="match_parent"
+        android:layout_height="80dip"
+        android:background="@drawable/family_bg13x"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/tv_hintmessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="7dip"
+            android:layout_marginLeft="30dip"
+            android:text="新雨滴产品使用说明"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dip"
+            android:src="@drawable/home_button3x" />
+    </RelativeLayout>
+
+    <WebView
+        android:scrollbars="none"
+        android:id="@+id/wv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll1"
+        android:padding="21dp"></WebView>
+    <!--       android:background="@color/color_transparent"-->
+</RelativeLayout>

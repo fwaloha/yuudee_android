@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/beijing"
+    android:fitsSystemWindows="true"
+    tools:context="mingci.MingciOneActivity">
+    <!--   android:background="@drawable/pintuactivity_bg"-->
+
+    <ImageView
+        android:id="@+id/iv_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:padding="10dp"
+        android:src="@drawable/tuichu" />
+    <!--   android:src="@drawable/home_button3x" />-->
+    <!--android:src="@drawable/tuichu" />-->
+    <LinearLayout
+
+        android:id="@+id/ll_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="40dp">
+
+        <ImageView
+            android:id="@+id/iv_xiaolian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/jinbi" />
+        <!--  android:text="x 3"-->
+        <TextView
+            android:id="@+id/tv_money"
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="5dp"
+            android:text=""
+            android:textColor="@color/paint_textcolor"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="298dp"
+        android:layout_height="299dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/ll_money"
+        android:background="@drawable/qianghuawu">
+
+        <ImageView
+            android:id="@+id/iv_gif"
+            android:layout_width="240dp"
+            android:layout_height="168dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="109dp"
+            android:scaleType="fitCenter"
+            />
+
+        <ImageView
+            android:id="@+id/iv_pin1"
+            android:layout_width="240dp"
+            android:layout_height="168dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="109dp"
+            android:src="@drawable/pin1" />
+
+        <ImageView
+            android:id="@+id/iv_pin2"
+            android:layout_width="240dp"
+            android:layout_height="168dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="109dp"
+            android:src="@drawable/pin2" />
+
+        <ImageView
+            android:id="@+id/iv_pin3"
+            android:layout_width="240dp"
+            android:layout_height="168dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="109dp"
+            android:src="@drawable/pin3" />
+
+        <ImageView
+            android:id="@+id/iv_pin4"
+            android:layout_width="240dp"
+            android:layout_height="168dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="109dp"
+            android:src="@drawable/pin4" />
+
+        <ImageView
+            android:id="@+id/iv_pin5"
+            android:layout_width="240dp"
+            android:layout_height="168dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="109dp"
+            android:src="@drawable/pin5" />
+
+        <ImageView
+            android:id="@+id/iv_pin6"
+            android:layout_width="240dp"
+            android:layout_height="168dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="109dp"
+            android:src="@drawable/pin6" />
+
+        <ImageView
+            android:id="@+id/iv_pin7"
+            android:layout_width="240dp"
+            android:layout_height="168dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="109dp"
+            android:src="@drawable/pin7" />
+
+        <ImageView
+            android:id="@+id/iv_pin8"
+            android:layout_width="240dp"
+            android:layout_height="168dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="109dp"
+            android:src="@drawable/pin8" />
+
+        <ImageView
+            android:id="@+id/iv_pin9"
+            android:layout_width="240dp"
+            android:layout_height="168dp"
+            android:layout_marginLeft="28dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="109dp"
+            android:src="@drawable/pin9" />
+    </FrameLayout>
+    <!-- <FrameLayout
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_centerInParent="true"
+         android:background="@drawable/qianghuawu"
+         android:layout_marginTop="100dp">
+
+         <ImageView
+             android:id="@+id/iv_gif"
+             android:layout_width="match_parent"
+             android:layout_height="200dp"
+             android:layout_gravity="center"
+             android:layout_marginLeft="30dp"
+             android:layout_marginRight="30dp"
+             android:scaleType="fitXY" />
+
+         <ImageView
+             android:id="@+id/iv_pin1"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:src="@drawable/pin1" />
+
+         <ImageView
+             android:id="@+id/iv_pin2"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:src="@drawable/pin2" />
+
+         <ImageView
+             android:id="@+id/iv_pin3"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:src="@drawable/pin3" />
+
+         <ImageView
+             android:id="@+id/iv_pin4"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:src="@drawable/pin4" />
+
+         <ImageView
+             android:id="@+id/iv_pin5"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:src="@drawable/pin5" />
+
+         <ImageView
+             android:id="@+id/iv_pin6"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:src="@drawable/pin6" />
+
+         <ImageView
+             android:id="@+id/iv_pin7"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:src="@drawable/pin7" />
+
+         <ImageView
+             android:id="@+id/iv_pin8"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:src="@drawable/pin8" />
+
+         <ImageView
+             android:id="@+id/iv_pin9"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:src="@drawable/pin9" />
+     </FrameLayout>-->
+
+</RelativeLayout>

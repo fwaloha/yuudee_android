@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/family_bg23x">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:background="@drawable/family_bg13x"
+            android:layout_width="match_parent"
+            android:layout_height="90dip"
+            android:orientation="vertical">
+            <TextView
+                android:textStyle="bold"
+                android:textSize="44px"
+                android:textColor="@color/white"
+                android:layout_marginLeft="30dip"
+                android:layout_centerVertical="true"
+                android:text="ABC问卷"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:textSize="26px"
+                android:textColor="@color/white"
+                android:layout_marginLeft="30dip"
+                android:layout_marginBottom="7dip"
+                android:layout_alignParentBottom="true"
+                android:text="孤独症行为量表"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dip"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/home_button3x"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_see"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:gravity="right|center_vertical"
+            android:text="查看答题说明"
+            android:textColor="#c06d00"
+            android:textSize="28px"
+            android:paddingRight="44px"
+            android:drawablePadding="17px"
+            android:drawableRight="@drawable/home_button_right3x"/>
+        <LinearLayout
+            android:id="@+id/parent_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="30px">
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_sure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/home_button_bg"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="60px"
+            android:layout_marginTop="150px"
+            android:text="确定"
+            android:textColor="@color/fff_btn_color"
+            android:gravity="center_horizontal"
+            android:paddingTop="22px"
+            android:textStyle="bold"
+            android:paddingBottom="10px"
+            android:textSize="18dp"/>
+    </LinearLayout>
+</ScrollView>

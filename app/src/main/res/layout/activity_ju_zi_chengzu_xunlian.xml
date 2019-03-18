@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/drawpage_bg"
+    android:fitsSystemWindows="true"
+    tools:context="mingci.MingciOneActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <com.easychange.admin.smallrain.views.IndicatorView
+            android:id="@+id/ll_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true" />
+
+        <ImageView
+            android:id="@+id/iv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/tuichu" />
+
+
+        <com.easychange.admin.smallrain.views.CircleBarTime
+            android:id="@+id/cb"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/ll_indicator"
+            android:visibility="gone"></com.easychange.admin.smallrain.views.CircleBarTime>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fL_big_pic"
+        android:layout_width="280dp"
+        android:layout_height="240dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/v_apple_bg"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="240dp"
+            android:layout_height="240dp"
+            android:layout_gravity="center"
+            android:clickable="false" />
+    </FrameLayout>
+    <!--      android:layout_marginTop="350dp"-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fL_big_pic"
+        android:layout_marginTop="26dp">
+
+        <LinearLayout
+            android:id="@+id/ll_text_parent_bg"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+
+            android:background="@color/color_transparent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="invisible"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_text_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@color/color_transparent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="invisible"></LinearLayout>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_text_bg_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fL_big_pic"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
+        android:background="@color/color_transparent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"></LinearLayout>
+    <!--  android:visibility="gone"-->
+
+    <!--        android:background="@color/color_transparent"-->
+    <LinearLayout
+        android:id="@+id/ll_click_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignTop="@id/ll_text_bg_parent"
+        android:layout_marginBottom="15dp"
+        android:background="@color/color_transparent"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="horizontal">
+
+    </LinearLayout>
+</RelativeLayout>

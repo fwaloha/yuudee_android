@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".login.RegisterActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/sign_bg3x">
+
+        <ImageView
+            android:id="@+id/img_home_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="22dip"
+            android:layout_marginTop="22dip"
+            android:src="@drawable/home_button3x" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+        >
+
+            <android.support.v4.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="198dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+
+
+                    android:background="@drawable/info_bg_bg"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/style_14101e_16"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center_horizontal"
+                        android:text="完善训练儿童个人信息"
+
+                        />
+
+                    <LinearLayout
+
+                        android:id="@+id/layout_pt_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_edt_phone_number"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="27dip"
+                            android:layout_marginRight="27dip"
+                            android:layout_marginTop="30dip"
+                            android:background="@drawable/border_edt_bg"
+
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/edt_phone_number"
+                                android:layout_width="match_parent"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:maxLength="13"
+                                android:drawableLeft="@drawable/ertong"
+                                android:drawablePadding="12dip"
+                                android:hint="请输入儿童昵称"
+                                android:maxLines="26"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                android:paddingLeft="15dip"
+                                android:textColor="@color/text_tu"
+                                android:textColorHint="@color/text_tu"
+                                android:textSize="14dip" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="27dip"
+                            android:layout_marginRight="27dip"
+                            android:layout_marginTop="21dip"
+                            android:background="@drawable/border_edt_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_sex"
+                                android:layout_width="match_parent"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/xingbie_da"
+                                android:drawablePadding="12dip"
+                                android:gravity="center_vertical"
+                                android:hint="请选择性别"
+                                android:paddingLeft="15dip"
+                                android:textColor="@color/text_tu"
+                                android:textColorHint="@color/text_tu"
+                                android:textSize="14dip" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="27dip"
+                            android:layout_marginRight="27dip"
+                            android:layout_marginTop="21dip"
+                            android:background="@drawable/border_edt_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_birthday"
+                                android:layout_width="match_parent"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/chusheng_riqi"
+                                android:drawablePadding="12dip"
+                                android:gravity="center_vertical"
+                                android:hint="请选择出生日期"
+                                android:paddingLeft="15dip"
+                                android:text=""
+                                android:textColor="@color/text_tu"
+                                android:textColorHint="@color/text_tu"
+                                android:textSize="14dip" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="27dip"
+                            android:layout_marginRight="27dip"
+                            android:layout_marginTop="21dip"
+                            android:background="@drawable/border_edt_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_location"
+                                android:layout_width="match_parent"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/juzhudi"
+                                android:drawablePadding="12dip"
+                                android:gravity="center_vertical"
+                                android:hint="请选择长期居住地"
+                                android:paddingLeft="15dip"
+                                android:text=""
+
+                                android:textColor="@color/text_tu"
+                                android:textColorHint="@color/text_tu"
+                                android:textSize="14dip" />
+                        </LinearLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/rl_yixue_zhenduan"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="27dip"
+                            android:layout_marginRight="27dip"
+                            android:layout_marginTop="21dip"
+                            android:background="@drawable/border_edt_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/et_yixue_zhenduan"
+                                android:layout_width="wrap_content"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/yiliao"
+                                android:drawablePadding="12dip"
+                                android:focusable="false"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                android:maxLength="13"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dip"
+                                android:text="请选择目前尝试的训练及疗法"
+                                android:textColor="@color/text_tu"
+                                android:textSize="14dip"
+                                android:visibility="gone" />
+                            <TextView
+                                android:id="@+id/tv_yixue_zhenduan"
+                                android:layout_width="match_parent"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/xixue_zhenduan"
+                                android:drawablePadding="12dip"
+                                android:gravity="center_vertical"
+                                android:hint="请选择医学诊断"
+                                android:paddingLeft="15dip"
+                                android:text=""
+
+                                android:textColor="@color/text_tu"
+                                android:textColorHint="@color/text_tu"
+                                android:textSize="14dip" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/ll_first_language"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="27dip"
+                            android:layout_marginRight="27dip"
+                            android:layout_marginTop="21dip"
+                            android:background="@drawable/border_edt_bg"
+
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/et_first_language"
+                                android:layout_width="wrap_content"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/diyiyuyan"
+                                android:drawablePadding="12dip"
+                                android:focusable="false"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dip"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                android:maxLength="13"
+                                android:text="请选择或填写儿童第一语言"
+                                android:textColor="@color/text_tu"
+                                android:textSize="14dip"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/tv_first_language"
+                                android:layout_width="match_parent"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/diyiyuyan"
+                                android:drawablePadding="12dip"
+                                android:focusable="false"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dip"
+                                android:text="请选择或填写儿童第一语言"
+                                android:textColor="@color/text_tu"
+                                android:textSize="14dip" />
+                        </RelativeLayout>
+
+                        <RelativeLayout
+                            android:id="@+id/ll_second_language"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="27dip"
+                            android:layout_marginRight="27dip"
+                            android:layout_marginTop="21dip"
+                            android:background="@drawable/border_edt_bg"
+
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <EditText
+
+                                android:id="@+id/ev_second_language"
+                                android:layout_width="wrap_content"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/dieryuyan"
+                                android:drawablePadding="12dip"
+                                android:focusable="false"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dip"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                android:maxLength="13"
+                                android:text="请选择或填写儿童第二语言"
+                                android:textColor="@color/text_tu"
+                                android:textSize="14dip"
+                                android:visibility="gone" />
+
+
+                            <TextView
+
+                                android:id="@+id/tv_second_language"
+                                android:layout_width="match_parent"
+
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/dieryuyan"
+                                android:drawablePadding="12dip"
+                                android:focusable="false"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dip"
+                                android:text="请选择或填写儿童第二语言"
+                                android:textColor="@color/text_tu"
+                                android:textSize="14dip" />
+                        </RelativeLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_dad_culture"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="27dip"
+                            android:layout_marginRight="27dip"
+                            android:layout_marginTop="21dip"
+                            android:background="@drawable/border_edt_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_dad_culture"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/baba_wenhua"
+                                android:drawablePadding="12dip"
+                                android:gravity="center_vertical"
+                                android:hint="请选择父亲最高文化程度"
+                                android:paddingLeft="15dip"
+                                android:text=""
+                                android:textColor="@color/text_tu"
+                                android:textColorHint="@color/text_tu"
+                                android:textSize="14dip" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_mom_culture"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="27dip"
+                            android:layout_marginRight="27dip"
+                            android:layout_marginTop="21dip"
+                            android:background="@drawable/border_edt_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tv_mom_culture"
+                                android:layout_width="match_parent"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/mama_wenhua"
+                                android:drawablePadding="12dip"
+                                android:gravity="center_vertical"
+                                android:hint="请选择母亲最高文化程度"
+                                android:paddingLeft="15dip"
+                                android:text=""
+                                android:textColor="@color/text_tu"
+                                android:textColorHint="@color/text_tu"
+                                android:textSize="14dip" />
+                        </LinearLayout>
+
+                        <!--      <LinearLayout
+                                  android:id="@+id/ll_location"
+
+                                  android:layout_width="match_parent"
+                                  android:layout_height="wrap_content"
+                                  android:layout_marginLeft="27dip"
+                                  android:layout_marginRight="27dip"
+                                  android:layout_marginTop="21dip"
+                                  android:background="@drawable/border_edt_bg"
+                                  android:gravity="center_vertical"
+                                  android:orientation="horizontal">
+
+                                  <TextView
+                                      android:id="@+id/tv_guo_sheng_shi"
+                                      android:layout_width="match_parent"
+                                      android:layout_height="43dip"
+                                      android:background="@null"
+                                      android:drawableLeft="@drawable/mama_wenhua"
+                                      android:drawablePadding="12dip"
+                                      android:gravity="center_vertical"
+                                      android:paddingLeft="15dip"
+                                      android:text="请选择国家省市"
+                                      android:textColor="@color/text_tu"
+                                      android:textSize="14dip" />
+                              </LinearLayout>-->
+
+                        <RelativeLayout
+                            android:id="@+id/ll_training_treatment"
+                            android:layout_width="match_parent"
+
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="20dp"
+                            android:layout_marginLeft="27dip"
+                            android:layout_marginRight="27dip"
+                            android:layout_marginTop="21dip"
+                            android:background="@drawable/border_edt_bg"
+                            android:clickable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/ev_training_treatment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:drawableLeft="@drawable/yiliao"
+                                android:drawablePadding="12dip"
+                                android:focusable="false"
+                                android:singleLine="true"
+                                android:ellipsize="end"
+                                android:maxLength="13"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dip"
+                                android:text="请选择目前尝试的训练及疗法"
+                                android:textColor="@color/text_tu"
+                                android:textSize="14dip"
+                                android:visibility="gone" />
+
+                            <TextView
+                                android:id="@+id/tv_training_treatment"
+                                android:layout_width="match_parent"
+                                android:layout_height="43dip"
+                                android:background="@null"
+                                android:clickable="false"
+                                android:drawableLeft="@drawable/yiliao"
+                                android:drawablePadding="12dip"
+                                android:focusable="false"
+                                android:gravity="center_vertical"
+                                android:paddingLeft="15dip"
+                                android:text="请选择目前尝试的训练及疗法"
+                                android:textColor="@color/text_tu"
+                                android:textSize="14dip" />
+                        </RelativeLayout>
+
+
+                        <TextView
+                            android:id="@+id/tv_login"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="30dp"
+                            android:layout_marginLeft="28dip"
+                            android:layout_marginRight="28dip"
+                            android:layout_marginTop="22dp"
+                            android:background="@drawable/longbutton3x"
+                            android:gravity="center"
+                            android:paddingBottom="10dip"
+                            android:text="完成"
+                            android:textColor="#b5ada5"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </android.support.v4.widget.NestedScrollView>
+        </RelativeLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

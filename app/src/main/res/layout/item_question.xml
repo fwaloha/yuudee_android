@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="20px"
+        android:paddingHorizontal="30px"
+        android:textSize="28px"
+        android:textColor="#14101e"
+        tools:text=" ● 1. 喜欢长时间自身旋转"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="94px"
+        android:paddingHorizontal="60px"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:checkedButton="@id/slight">
+
+        <RadioButton
+            android:id="@+id/non"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="没有"
+            android:textSize="28px"
+            android:textColor="@color/cc_check_color"/>
+        <RadioButton
+            android:id="@+id/slight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="轻微"
+            android:textSize="28px"
+            android:textColor="@color/cc_check_color"/>
+        <RadioButton
+            android:id="@+id/obvious"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="明显"
+            android:textSize="28px"
+            android:textColor="@color/cc_check_color"/>
+        <RadioButton
+            android:id="@+id/serious"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="严重"
+            android:textSize="28px"
+            android:textColor="@color/cc_check_color"/>
+
+    </RadioGroup>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:textColor="#c06d00"
+        android:text="----------------------------------------------------------------------------------------------------"/>
+
+</LinearLayout>

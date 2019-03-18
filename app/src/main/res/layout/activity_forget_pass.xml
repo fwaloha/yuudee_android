@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sign_bg3x"
+    tools:context=".login.RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="220dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="28dip">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="忘记密码"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dip"
+            android:layout_marginRight="27dip"
+            android:layout_marginTop="30dip"
+            android:background="@drawable/border_edt_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_phone_number"
+                android:layout_width="match_parent"
+                android:layout_height="43dip"
+                android:background="@null"
+                android:drawableLeft="@drawable/set_pass"
+                android:drawablePadding="52dip"
+                android:hint="请输入手机号"
+                android:inputType="number"
+                android:maxLength="13"
+                android:paddingLeft="15dip"
+                android:textColor="@color/text_tu"
+                android:textColorHint="@color/text_tu"
+                android:textSize="14dip" />
+
+            <TextView
+                android:id="@+id/tv_get_city_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="40dp"
+                android:text="+86 "
+                android:textColor="@color/text_tu"
+                android:textSize="14dip" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="21dip"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!--滑块验证-->
+                <RelativeLayout
+                    android:id="@+id/seekbar_rlyt"
+                    android:layout_width="match_parent"
+                    android:layout_height="43dip"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false">
+
+                    <com.easychange.admin.smallrain.views.VerificationSeekBar
+                        android:id="@+id/seekbar_sb"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="false"
+                        android:max="100"
+                        android:maxHeight="43dp"
+                        android:minHeight="43dp"
+                        android:progressDrawable="@drawable/seekbar_bg_one"
+                        android:thumb="@drawable/thumb_left"
+                        android:thumbOffset="0dp" />
+
+                    <TextView
+                        android:id="@+id/seekbar_tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="向右拖动滑块验证"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:id="@+id/v_floating_in_the_above"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"></View>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/ll_verification_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="17dip"
+                    android:layout_marginRight="17dip"
+                    android:background="@drawable/border_edt_bg"
+
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <EditText
+                        android:id="@+id/edit_security_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="43dip"
+                        android:background="@null"
+                        android:drawableLeft="@drawable/yanzhengma"
+                        android:drawablePadding="15dip"
+                        android:hint="请输入短信验证码"
+                        android:inputType="number"
+                        android:maxLength="13"
+                        android:paddingHorizontal="28dip"
+                        android:textColor="@color/text_tu"
+                        android:textColorHint="@color/text_tu"
+                        android:textSize="14dip" />
+
+
+                    <TextView
+                        android:id="@+id/tv_get_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="20dp"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="重新发送"
+                        android:textColor="@color/text_tu"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+
+                <!--  <LinearLayout
+                      android:id="@+id/ll_verification_code"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:focusable="false"
+                      android:focusableInTouchMode="false"
+                      android:orientation="vertical"
+                      android:visibility="gone">
+
+                      <TextView
+                          android:id="@+id/tv_get_code"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:layout_marginLeft="20dip"
+                          android:layout_marginRight="20dip"
+                          android:background="@drawable/longbutton3x"
+                          android:enabled="true"
+                          android:focusable="false"
+                          android:focusableInTouchMode="false"
+                          android:gravity="center"
+                          android:paddingBottom="10dip"
+                          android:text="60秒后重新获取"
+                          android:textColor="@color/text_code"
+                          android:textSize="14sp" />
+
+                      <com.easychange.admin.smallrain.views.SecurityCodeView
+                          android:id="@+id/edit_security_code"
+                          android:layout_width="match_parent"
+                          android:layout_height="60dp"
+                          android:layout_gravity="center_vertical"
+                          android:layout_marginLeft="20dip"
+                          android:layout_marginRight="20dip"
+                          android:gravity="center"
+                          android:padding="5dp"></com.easychange.admin.smallrain.views.SecurityCodeView>
+
+                  </LinearLayout>-->
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dip"
+            android:layout_marginRight="27dip"
+            android:layout_marginTop="21dip"
+            android:background="@drawable/border_edt_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_pass"
+                android:layout_width="match_parent"
+                android:layout_height="43dip"
+                android:background="@null"
+                android:drawableLeft="@drawable/set_pass"
+                android:drawablePadding="12dip"
+                android:hint="请输入6-13位数字或字母组合"
+                android:inputType="textPassword"
+                android:maxLength="13"
+                android:digits="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+                android:paddingHorizontal="28dip"
+                android:textColor="@color/text_tu"
+                android:textColorHint="@color/text_tu"
+                android:textSize="14dip" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dip"
+            android:layout_marginRight="27dip"
+            android:layout_marginTop="21dip"
+            android:background="@drawable/border_edt_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_sure_pass"
+
+                android:layout_width="match_parent"
+                android:layout_height="43dip"
+                android:background="@null"
+                android:drawableLeft="@drawable/set_pass"
+                android:drawablePadding="12dip"
+                android:hint="请再次确认密码"
+                android:inputType="textPassword"
+                android:maxLength="13"
+                android:digits="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
+                android:paddingHorizontal="28dip"
+                android:textColor="@color/text_tu"
+                android:textColorHint="@color/text_tu"
+                android:textSize="14dip" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="25dip"
+            android:layout_marginRight="25dip"
+            android:layout_marginTop="53dip"
+            android:background="@drawable/longbutton3x"
+            android:enabled="false"
+            android:gravity="center"
+            android:paddingBottom="8dip"
+            android:text="确定"
+            android:textColor="#fffdec"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_home_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="22dip"
+        android:layout_marginTop="22dip"
+        android:src="@drawable/home_button3x" />
+</RelativeLayout>

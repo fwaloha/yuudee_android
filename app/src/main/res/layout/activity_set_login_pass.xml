@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/sign_bg3x"
+    tools:context=".login.RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingLeft="30dip"
+            android:paddingRight="30dip">
+
+            <TextView
+                android:layout_width="0dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="设置登录密码"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dip"
+            android:layout_marginRight="27dip"
+            android:layout_marginTop="21dip"
+            android:background="@drawable/border_edt_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_pass"
+                android:layout_width="match_parent"
+                android:layout_height="43dip"
+                android:background="@null"
+                android:drawableLeft="@drawable/set_pass"
+                android:drawablePadding="12dip"
+                android:hint="请输入6-13位数字或字母组合"
+                android:inputType="textPassword"
+                android:maxLength="13"
+                android:paddingLeft="15dip"
+                android:textColor="@color/text_tu"
+                android:textColorHint="@color/text_tu"
+                android:textSize="14dip" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="27dip"
+            android:layout_marginRight="27dip"
+            android:layout_marginTop="21dip"
+            android:background="@drawable/border_edt_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/edt_sure_pass"
+                android:layout_width="match_parent"
+                android:layout_height="43dip"
+                android:background="@null"
+                android:drawableLeft="@drawable/set_pass"
+                android:drawablePadding="12dip"
+                android:hint="请再次确认密码"
+                android:inputType="textPassword"
+                android:maxLength="13"
+                android:paddingLeft="15dip"
+                android:textColor="@color/text_tu"
+                android:textColorHint="@color/text_tu"
+                android:textSize="14dip" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_marginTop="53dip"
+            android:background="@drawable/longbutton3x"
+            android:gravity="center"
+            android:paddingBottom="10dip"
+            android:text="完成"
+            android:textColor="#b5ada5"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_home_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="22dip"
+        android:layout_marginTop="22dip"
+        android:src="@drawable/home_button3x" />
+</RelativeLayout>

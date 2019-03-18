@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="96dip"
+        android:layout_marginBottom="57dip"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="90px"
+            android:layout_height="90px"
+            android:src="@drawable/sign_state_ok"
+            android:layout_marginRight="22px"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#14101e"
+            android:text="恭喜您，注册成功"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_sure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="25dp"
+        android:background="@drawable/longbutton3x"
+        android:enabled="true"
+        android:gravity="center"
+        android:paddingBottom="10dip"
+        android:text="OK"
+        android:textColor="@color/fff_btn_color"
+        android:textStyle="bold"
+        android:textSize="16sp" />
+</LinearLayout>
