@@ -10,7 +10,7 @@
         android:orientation="vertical">
         <TextView
             android:textStyle="bold"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_marginLeft="30dip"
             android:layout_centerVertical="true"
@@ -23,15 +23,16 @@
             android:layout_marginLeft="30dip"
             android:layout_marginBottom="7dip"
             android:layout_alignParentBottom="true"
-            android:text="让我们来客观评测孩子的进步！"
+            android:text="让我们一起来客观评测孩子的进步！"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="15dip"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="22dip"
             android:layout_alignParentRight="true"
-            android:src="@drawable/home_button3x"
+            android:src="@drawable/tuichu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
@@ -50,7 +51,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="26dp"
-                android:layout_marginTop="35dp">
+                android:layout_marginTop="15dp">
 
                 <Button
                     android:id="@+id/btn_pcdi"
@@ -63,7 +64,7 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/fff_btn_color"
-                    android:layout_marginBottom="15dp" />
+                    android:layout_marginBottom="5dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -84,7 +85,7 @@
                         android:textSize="13sp"
                         android:textColor="#14101e"
                         android:lineSpacingExtra="10dp"
-                        android:text="PCDI量表是由父母填写，测量16个月以上说普通话的儿童早期语言发展的评估量表。"/>
+                        android:text="PCDI量表是由父母填写，测量16个月以上说普通话的儿童早期语言发展的评估量表。目前已在世界各地广泛使用。"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -107,7 +108,7 @@
                         android:textSize="13sp"
                         android:textColor="#14101e"
                         android:lineSpacingExtra="10dp"
-                        android:text="通过使用本量表，可以对语言发育迟缓的儿童进行定期监控，对干预效果（新雨滴训练内容）进行监控，以便更好的帮助儿童训练。"/>
+                        android:text="通过使用本量表，可以对语言发育迟缓的儿童进行定期监控，以发现其在同龄儿童中的差异和进步。"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -140,7 +141,7 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:orientation="vertical"
                 android:layout_marginHorizontal="26dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp">
 
                 <Button
@@ -154,10 +155,9 @@
                     android:textSize="16sp"
                     android:textStyle="bold"
                     android:textColor="@color/fff_btn_color"
-                    android:layout_marginBottom="15dp"  />
+                    android:layout_marginBottom="5dp"  />
 
                 <LinearLayout
-                    android:layout_marginTop="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -198,7 +198,29 @@
                         android:textSize="13sp"
                         android:textColor="#14101e"
                         android:lineSpacingExtra="10dp"
-                        android:text="本量表有57个描述自闭症儿童的感觉、行为、情绪、语言等方面异常表现的项目，通过使用本量表，可以对自闭症儿童进行整体症状评估打分"/>
+                        android:text="本量表有57个描述自闭症儿童的感觉、行为、情绪、语言等方面异常表现的项目，通过使用本量表，可以对自闭症儿童进行整体症状评估打分。"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="10sp"
+                        android:textColor="#14101e"
+                        android:lineSpacingExtra="10dp"
+                        android:text="●"
+                        android:layout_marginRight="4dp" />
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="13sp"
+                        android:textColor="#14101e"
+                        android:lineSpacingExtra="10dp"
+                        android:text="本量表必做部分将花费您10~15分钟时间。"/>
                 </LinearLayout>
 
                </LinearLayout>
