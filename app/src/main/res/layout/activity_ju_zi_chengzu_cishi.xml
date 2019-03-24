@@ -49,6 +49,7 @@
             android:id="@+id/iv_xiaolian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:visibility="gone"
             android:src="@drawable/jinbi" />
 
         <TextView

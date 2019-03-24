@@ -641,6 +641,7 @@ public class JuZiChengZuCiShiLianActivity extends BaseActivity implements AsyncR
                                                             int currentGold = gold + 1;
                                                             tvMoney.setText("x " + currentGold);
                                                             ivXiaolian.setVisibility(View.VISIBLE);
+                                                            tvMoney.setVisibility(View.VISIBLE);
                                                         }
 
                                                     }
@@ -838,6 +839,7 @@ public class JuZiChengZuCiShiLianActivity extends BaseActivity implements AsyncR
                                                             int currentGold = gold + 1;
                                                             tvMoney.setText("x " + currentGold);
                                                             ivXiaolian.setVisibility(View.VISIBLE);
+                                                            tvMoney.setVisibility(View.VISIBLE);
                                                         }
 
                                                     }
@@ -1111,8 +1113,11 @@ public class JuZiChengZuCiShiLianActivity extends BaseActivity implements AsyncR
                                     if (gold != 0) {
                                         JuZiChengZuCiShiLianActivity.this.gold = gold;
                                         tvMoney.setText("x " + gold);
+                                        ivXiaolian.setVisibility(View.VISIBLE);
+                                        tvMoney.setVisibility(View.VISIBLE);
                                     } else {
                                         ivXiaolian.setVisibility(View.GONE);
+                                        tvMoney.setVisibility(View.GONE);
                                     }
 
                                 }

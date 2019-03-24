@@ -41,7 +41,8 @@ import http.Setting;
  * describe:  通关成功页面(拼图全都飞出去)
  */
 public class PinTuAllFlyActivity extends BaseActivity implements View.OnClickListener, AsyncRequest {
-
+    @BindView(R.id.iv_xiaolian)
+    ImageView ivXiaolian ;
     @BindView(R.id.iv_home)
     ImageView ivHome;
     @BindView(R.id.iv_pin1)
@@ -398,6 +399,9 @@ public class PinTuAllFlyActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void run() {
                 tvMoney.setText("x " + 0);
+                tvMoney.setVisibility(View.GONE);
+                ivXiaolian.setVisibility(View.GONE);
+
             }
         },2000);
 

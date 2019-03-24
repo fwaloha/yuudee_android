@@ -44,7 +44,8 @@ import http.Setting;
  * 拼图页面
  */
 public class PinTuActivity extends BaseActivity implements View.OnClickListener, AsyncRequest {
-
+    @BindView(R.id.iv_xiaolian)
+    ImageView ivXiaolian ;
     @BindView(R.id.iv_home)
     ImageView ivHome;
     @BindView(R.id.iv_pin1)
@@ -341,6 +342,13 @@ public class PinTuActivity extends BaseActivity implements View.OnClickListener,
             @Override
             public void run() {
                 tvMoney.setText("x " + (anInt1 - 10));
+                if ((anInt1-10)==0){
+                    ivXiaolian.setVisibility(View.GONE);
+                    tvMoney.setVisibility(View.GONE);
+                } else {
+                    ivXiaolian.setVisibility(View.VISIBLE);
+                    tvMoney.setVisibility(View.VISIBLE);
+                }
             }
         }, 2000);
 

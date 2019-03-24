@@ -527,9 +527,12 @@ public class DongciTestOneActivity extends BaseActivity implements View.OnClickL
                                     if (gold != 0) {
                                         DongciTestOneActivity.this.gold = gold;
                                         tvMoney.setText("x " + gold);
-                                        ivJinbi.setVisibility(View.VISIBLE);
+                                        if (gold==0){
+                                            llMoney.setVisibility(View.GONE);
+                                        }
+                                        llMoney.setVisibility(View.VISIBLE);
                                     } else {
-                                        ivJinbi.setVisibility(View.GONE);
+                                        llMoney.setVisibility(View.GONE);
                                     }
 
                                 }
@@ -1415,6 +1418,7 @@ public class DongciTestOneActivity extends BaseActivity implements View.OnClickL
                     if (Integer.parseInt(pass) == 1) {//pass	是	string	是否通过 1 是 0 否
                         int currentGold = gold + 1;
                         tvMoney.setText("x " + currentGold);
+                        llMoney.setVisibility(View.VISIBLE);
                         ivJinbi.setVisibility(View.VISIBLE);
                     }
 

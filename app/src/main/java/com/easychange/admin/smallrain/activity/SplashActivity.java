@@ -159,9 +159,9 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private String isLogin = "1";
-    private long milTime = 5000;
+    private long milTime = 3000;
     private boolean isBJump = false;
-    private CountDownTimer mCountDown = new CountDownTimer(TimeUnit.SECONDS.toMillis(5), TimeUnit.SECONDS.toMillis(1)) {
+    private CountDownTimer mCountDown = new CountDownTimer(TimeUnit.SECONDS.toMillis(3), TimeUnit.SECONDS.toMillis(1)) {
         @Override
         public void onTick(long millisUntilFinished) {
             Log.d("dis", "onTick() called with: millisUntilFinished = [" + millisUntilFinished + "]");
