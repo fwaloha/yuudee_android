@@ -2832,28 +2832,33 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
 //                                是否需要完善儿童个人信息(1:未完善 2:已完善)
                                 checking = assementReviewBean.getRemindType();
 
-                                if ("1".equals(assementReviewBean.getIsRemind())) {
-                                    String message = getResources().getString(R.string.new_password);
-                                    Spanned ss = Html.fromHtml(message);
-                                    // 未完善儿童信息，弹框让完善儿童信息
-                                    showIsRemindDialog("完善训练儿童信息", messageRemind, "去完善");
+                                if ("1".equals(assementReviewBean.getRemindType())){
+                                    if ("1".equals(assementReviewBean.getIsRemind())) {
+                                        String message = getResources().getString(R.string.new_password);
+                                        Spanned ss = Html.fromHtml(message);
+                                        // 未完善儿童信息，弹框让完善儿童信息
+                                        showIsRemindDialog("完善训练儿童信息", messageRemind, "去完善");
 
-                                    isFinished = false;
-                                } else if ("2".equals(assementReviewBean.getIsRemind())) {
+                                        isFinished = false;
+                                    } else if ("2".equals(assementReviewBean.getIsRemind())) {
 
-                                    if ("0".equals(assementReviewBean.getIsRecord())) {
-                                        // 没有填写过问卷，弹框完善问卷
-                                        showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
-                                    } else if ("1".equals(assementReviewBean.getIsRecord())) {
-                                        if ("1".equals(assementReviewBean.getAbcIsRemind()) || "1".equals(assementReviewBean.getPcdiIsRemind())) {
-                                            // 月度弹框，
-                                            showIsRemindDialog("定期问卷评估提醒", "messageMonth", "去评估");
+                                        if ("0".equals(assementReviewBean.getIsRecord())) {
+                                            // 没有填写过问卷，弹框完善问卷
+                                            showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
+                                        } else if ("1".equals(assementReviewBean.getIsRecord())) {
+                                            if ("1".equals(assementReviewBean.getAbcIsRemind()) || "1".equals(assementReviewBean.getPcdiIsRemind())) {
+                                                // 月度弹框，
+                                                showIsRemindDialog("定期问卷评估提醒", "messageMonth", "去评估");
+                                            }
                                         }
+                                        isFinished = true;
+
                                     }
-                                    isFinished = true;
 
+
+                                }else if ("2".equals(assementReviewBean.getRemindType())){
+                                    showPingguDialog();
                                 }
-
                             }
                         } else if (assementReviewBeanBaseBean.code == 205 || assementReviewBeanBaseBean.code == 209) {
                             GoToLoginActivityUtils.tokenFailureLoginOut(BalloonActivity.this);

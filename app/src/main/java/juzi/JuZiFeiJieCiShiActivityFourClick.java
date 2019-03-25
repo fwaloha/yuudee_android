@@ -1642,6 +1642,7 @@ public class JuZiFeiJieCiShiActivityFourClick extends BaseActivity implements As
                                     if (gold != 0) {
                                         JuZiFeiJieCiShiActivityFourClick.this.gold = gold;
                                         tvMoney.setText("x " + gold);
+                                        ivXiaolian.setVisibility(View.VISIBLE);
                                     } else {
                                         ivXiaolian.setVisibility(View.GONE);
                                     }
