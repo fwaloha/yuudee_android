@@ -1122,19 +1122,19 @@ public class PerfectionChildrenInfoActivity extends BaseActivity implements City
             return;
         }
 
-//        if (areaidProvince != -1) {
-//            stringStringHashMap.put("provinceId", areaidProvince + "");//
-//        } else {
+        if (areaidProvince != -1) {
+            stringStringHashMap.put("provinceId", areaidProvince + "");//
+        } else {
 //            ToastUtil.showToast(mContext, "请选择国家省份城市");
-//            return;
-//        }
-//
-//        if (areaidCity != -1) {
-//            stringStringHashMap.put("cityId", areaidCity + "");//
-//        } else {
-//            ToastUtil.showToast(mContext, "请选择国家省份城市");
-//            return;
-//        }
+            stringStringHashMap.put("provinceId", -1+"");//
+    //        return;
+        }
+
+        if (areaidCity != -1) {
+            stringStringHashMap.put("cityId", areaidCity + "");//
+        } else {
+            stringStringHashMap.put("cityId", -1 + "");//
+        }
 
         stringStringHashMap.put("states", states);//
 
@@ -1367,10 +1367,14 @@ public class PerfectionChildrenInfoActivity extends BaseActivity implements City
 
         if (areaidProvince != -1) {
             stringStringHashMap.put("provinceId", areaidProvince + "");//
+        }else {
+            stringStringHashMap.put("provinceId",  -1+ "");//
         }
 
         if (areaidCity != -1) {
             stringStringHashMap.put("cityId", areaidCity + "");//
+        }else {
+            stringStringHashMap.put("cityId", -1 + "");//
         }
 
         stringStringHashMap.put("states", states);//
@@ -1625,14 +1629,31 @@ public class PerfectionChildrenInfoActivity extends BaseActivity implements City
                             String address = data1.getXydChild().getAddress();
                             if (!TextUtils.isEmpty(address)) {
                                 if (!address.contains("null")) {
-                                    tvLocation.setText(address);
-                                    if(data1.getXydChild().getCityId() != -1)
-                                    countryAareaid = Integer.valueOf(data1.getXydChild().getCountiyId());
-                                    if(data1.getXydChild().getProvinceId() != -1)
-                                    areaidProvince = Integer.valueOf(data1.getXydChild().getProvinceId());
-                                    if(data1.getXydChild().getCityId() != -1)
-                                    areaidCity = Integer.valueOf(data1.getXydChild().getCityId());
+                                    Matcher matcher=Pattern.compile("-").matcher(address);
+                                    if(matcher.find()){
+                                    String  address1 =   address.substring(0,matcher.start());
+                                        if(!address.contains("中国")){
+                                            tvLocation.setText(address1);
+                                        }else {
+                                            tvLocation.setText(address);
+                                        }
+
+                                    }
+//                                    tvLocation.setText(address);
+
+                                }else {
+                                    Matcher matcher=Pattern.compile("-").matcher(address);
+                                    if(matcher.find()){
+                                         address =   address.substring(0,matcher.start());
+                                        tvLocation.setText(address);
+                                    }
                                 }
+                                if(data1.getXydChild().getCityId() != -1)
+                                    countryAareaid = Integer.valueOf(data1.getXydChild().getCountiyId());
+                                if(data1.getXydChild().getProvinceId() != -1)
+                                    areaidProvince = Integer.valueOf(data1.getXydChild().getProvinceId());
+                                if(data1.getXydChild().getCityId() != -1)
+                                    areaidCity = Integer.valueOf(data1.getXydChild().getCityId());
                             }
 //                            "countiy": "中国",
 //                                    "province": "宁夏",

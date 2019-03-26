@@ -1149,7 +1149,7 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                 llClickLayout.addView(inflate);
             }
             ImageView iv_click_pic = (ImageView) inflate.findViewById(R.id.iv_click_pic);
-
+            Log.e("mingciurlpic",nounTestBean.getList().get(0).getCardColorImage());
             if (i == 0) {
                 GlideUtil.display(MingciTestOneActivity.this, nounTestBean.getList().get(0).getCardColorImage(), iv_click_pic);
             } else if (i == 1) {

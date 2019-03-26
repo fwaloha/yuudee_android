@@ -26,6 +26,7 @@ import com.easychange.admin.smallrain.login.LoginActivity;
 import com.easychange.admin.smallrain.utils.MyUtils;
 import com.easychange.admin.smallrain.utils.SendSmsTimerUtils;
 import com.easychange.admin.smallrain.utils.SoftKeyBoardListener;
+import com.easychange.admin.smallrain.views.SecurityCodeView;
 import com.easychange.admin.smallrain.views.VerificationSeekBar;
 import com.qlzx.mylibrary.base.BaseSubscriber;
 import com.qlzx.mylibrary.bean.BaseBean;
@@ -78,7 +79,7 @@ public class EditDataActivity extends BaseActivity implements TextWatcher, Async
     private EditText one;
     private EditText two;
     private EditText three;
-    private FillBlankView etCode;
+    private SecurityCodeView etCode;
 
     private Intent intent;
     private EditText myPhone;
@@ -142,7 +143,6 @@ public class EditDataActivity extends BaseActivity implements TextWatcher, Async
 //              1821 0182 462
                 view = View.inflate(this, R.layout.layout_edit_phone_one, null);
                 parentLayout.addView(view);
-
                 tvSure = parentLayout.findViewById(R.id.tv_sure);
 
                 myPhone = (EditText) parentLayout.findViewById(R.id.et_one);
@@ -386,26 +386,39 @@ public class EditDataActivity extends BaseActivity implements TextWatcher, Async
                 });
 
                 etCode = parentLayout.findViewById(R.id.edt_code);//验证码
-                etCode.addTextChangedListener(new TextWatcher() {
+//                etCode.addTextChangedListener(new TextWatcher() {
+//                    @Override
+//                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                    }
+//
+//                    @Override
+//                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                    }
+//
+//                    @Override
+//                    public void afterTextChanged(Editable editable) {
+//                        String s = editable.toString();
+//
+//                        if (s.length() >= 6) {
+//
+//                        }
+//                    }
+//                });
+                etCode.setInputCompleteListener(new SecurityCodeView.InputCompleteListener() {
                     @Override
-                    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    }
-
-                    @Override
-                    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    }
-
-                    @Override
-                    public void afterTextChanged(Editable editable) {
-                        String s = editable.toString();
-
+                    public void inputComplete() {
+                        String s = etCode.getEditContent().toString();
                         if (s.length() >= 6) {
                             isNewPhoneVerify = true;
                             updatePhone(newPhone, newDistriceId, s);
                         }
                     }
-                });
 
+                    @Override
+                    public void deleteContent(boolean isDelete) {
+
+                    }
+                });
                 currentGetVerifyCode = tvGetCode;
                 sendCode(newPhone, newDistriceId, "4");
                 break;
