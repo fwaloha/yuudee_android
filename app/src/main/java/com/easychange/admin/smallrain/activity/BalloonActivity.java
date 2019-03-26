@@ -171,6 +171,7 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
     boolean isNetConnect = true;
     boolean isShowAccess = true;
     String checking = "1";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -198,15 +199,14 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
         EventBus.getDefault().postSticky(new FinishHomeActivityBean());
 
 
-
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+   /* @Subscribe(threadMode = ThreadMode.MAIN)
     public void CustomsClearanceSuccessBean(CustomsClearanceSuccessBean event) {//通关成功的回调
-        if ("2".equals(checking)){
+        if ("2".equals(checking)) {
             showPingguDialog();
         }
-    }
+    }*/
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void BreakNetBean(NetChangeBean event) {//断网
@@ -216,7 +216,7 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
             iv_juzi.setTag(true);
             //iv_mingci.setClickable(true);
             iv_mingci.setTag(true);
-           // iv_dongci.setClickable(true);
+            // iv_dongci.setClickable(true);
             iv_dongci.setTag(true);
             ToastUtil.showToast(this, "当前网络已断开");
         } else {
@@ -416,7 +416,7 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                 getIsRemindDialog(new PreferencesHelper(this).getToken());
             }
         }
-        isShowAccess = false ;
+        isShowAccess = false;
     }
 
     @OnClick({R.id.iv_head, R.id.ll_jiazhang, R.id.iv_mingci, R.id.iv_dongci, R.id.iv_juzi})
@@ -727,11 +727,11 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
 
                         if (code.equals("200")) {
                             if (dataStr == null) {   //data是null
-                             //   iv_mingci.setClickable(true);
+                                //   iv_mingci.setClickable(true);
                                 iv_mingci.setTag(true);
-                            //    iv_dongci.setClickable(false);
+                                //    iv_dongci.setClickable(false);
                                 iv_dongci.setTag(false);
-                               // iv_juzi.setClickable(false);
+                                // iv_juzi.setClickable(false);
                                 iv_juzi.setTag(false);
                                 iv_dongci.setImageResource(R.drawable.dongci_dark);
                                 iv_juzi.setImageResource(R.drawable.juzi_dark);
@@ -756,8 +756,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                 iv_dongci.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                            ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                        if (view.getTag() != null && !(boolean) view.getTag()) {
+                                            ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                             return;
                                         }
                                         showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
@@ -767,8 +767,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                 iv_juzi.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                            ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                        if (view.getTag() != null && !(boolean) view.getTag()) {
+                                            ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                             return;
                                         }
                                         showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
@@ -785,8 +785,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                         switch (motionEvent.getAction()) {
 
                                             case MotionEvent.ACTION_UP:
-                                                if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                    ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                    ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                     return true;
                                                 }
                                                 int x = (int) motionEvent.getX();
@@ -837,11 +837,11 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                             iv_juzi.setOnClickListener(null);
 
                             if (!TextUtils.isEmpty(dataStr) && dataStr.equals("0")) {//data是0
-                               // iv_mingci.setClickable(true);
+                                // iv_mingci.setClickable(true);
                                 iv_mingci.setTag(true);
-                             //  iv_dongci.setClickable(false);
+                                //  iv_dongci.setClickable(false);
                                 iv_dongci.setTag(false);
-                              //  iv_juzi.setClickable(false);
+                                //  iv_juzi.setClickable(false);
                                 iv_juzi.setTag(false);
                                 iv_dongci.setImageResource(R.drawable.dongci_dark);
                                 iv_juzi.setImageResource(R.drawable.juzi_dark);
@@ -866,8 +866,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                 iv_dongci.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                            ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                        if (view.getTag() != null && !(boolean) view.getTag()) {
+                                            ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                             return;
                                         }
                                         showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
@@ -877,8 +877,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                 iv_juzi.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View view) {
-                                        if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                            ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                        if (view.getTag() != null && !(boolean) view.getTag()) {
+                                            ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                             return;
                                         }
                                         showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
@@ -896,8 +896,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                             switch (motionEvent.getAction()) {
 
                                                 case MotionEvent.ACTION_UP:
-                                                    if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                        ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                    if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                        ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                         return true;
                                                     }
                                                     int x = (int) motionEvent.getX();
@@ -947,8 +947,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                             switch (motionEvent.getAction()) {
 
                                                 case MotionEvent.ACTION_UP:
-                                                    if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                        ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                    if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                        ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                         return true;
                                                     }
                                                     int x = (int) motionEvent.getX();
@@ -1011,8 +1011,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                             switch (motionEvent.getAction()) {
 
                                                 case MotionEvent.ACTION_UP:
-                                                    if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                        ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                    if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                        ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                         return true;
                                                     }
                                                     int x = (int) motionEvent.getX();
@@ -1073,8 +1073,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -1137,15 +1137,15 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
 //                            sentence	string	句子分解 学习子模块 1训练 2测试 3意义
                                     //iv_mingci.setClickable(true);
                                     iv_mingci.setTag(true);
-                                   // iv_dongci.setClickable(true);
+                                    // iv_dongci.setClickable(true);
                                     iv_dongci.setTag(true);
-                                   // iv_juzi.setClickable(true);
+                                    // iv_juzi.setClickable(true);
                                     iv_juzi.setTag(true);
                                     module = model.getData().getModule();
                                     if (module.equals("1")) {
-                                       // iv_dongci.setClickable(false);
+                                        // iv_dongci.setClickable(false);
                                         iv_dongci.setTag(false);
-                                      //  iv_juzi.setClickable(false);
+                                        //  iv_juzi.setClickable(false);
                                         iv_juzi.setTag(false);
                                         iv_dongci.setImageResource(R.drawable.dongci_dark);
                                         iv_juzi.setImageResource(R.drawable.juzi_dark);
@@ -1159,8 +1159,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                         iv_dongci.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                    ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                    ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                     return;
                                                 }
                                                 showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
@@ -1170,8 +1170,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                         iv_juzi.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                    ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                    ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                     return;
                                                 }
                                                 showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
@@ -1183,7 +1183,7 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                         iv_dongci.setTag(true);
                                         iv_dongci.setImageResource(R.drawable.dongci_yellow);
 
-                                     //   iv_juzi.setClickable(false);
+                                        //   iv_juzi.setClickable(false);
                                         iv_juzi.setTag(false);
                                         iv_juzi.setImageResource(R.drawable.juzi_dark);
 
@@ -1207,18 +1207,18 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                         iv_juzi.setOnClickListener(new View.OnClickListener() {
                                             @Override
                                             public void onClick(View view) {
-                                                if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                    ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                    ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                     return;
                                                 }
                                                 showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
                                             }
                                         });
                                     } else if (module.equals("3")) {
-                                     //   iv_juzi.setClickable(true);
+                                        //   iv_juzi.setClickable(true);
                                         iv_juzi.setTag(true);
                                         iv_juzi.setImageResource(R.drawable.juzi_yellow);
-                                      //  iv_dongci.setClickable(true);
+                                        //  iv_dongci.setClickable(true);
                                         iv_dongci.setTag(true);
                                         iv_dongci.setImageResource(R.drawable.dongci_yellow);
 
@@ -1239,10 +1239,10 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                         bigAnima(iv_juzi);
                                         currentChoosePosition = 2;
                                     } else {
-                                       // iv_juzi.setClickable(true);
+                                        // iv_juzi.setClickable(true);
                                         iv_juzi.setTag(true);
                                         iv_juzi.setImageResource(R.drawable.juzi_yellow);
-                                      //  iv_dongci.setClickable(true);
+                                        //  iv_dongci.setClickable(true);
                                         iv_dongci.setTag(true);
                                         iv_dongci.setImageResource(R.drawable.dongci_yellow);
 
@@ -1300,8 +1300,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                         switch (motionEvent.getAction()) {
 
                                                             case MotionEvent.ACTION_UP:
-                                                                if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                    ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                                if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                    ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                     return true;
                                                                 }
                                                                 int x = (int) motionEvent.getX();
@@ -1355,8 +1355,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                         switch (motionEvent.getAction()) {
 
                                                             case MotionEvent.ACTION_UP:
-                                                                if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                    ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                                if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                    ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                     return true;
                                                                 }
                                                                 int x = (int) motionEvent.getX();
@@ -1410,8 +1410,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                         switch (motionEvent.getAction()) {
 
                                                             case MotionEvent.ACTION_UP:
-                                                                if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                    ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                                if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                    ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                     return true;
                                                                 }
                                                                 int x = (int) motionEvent.getX();
@@ -1489,8 +1489,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -1544,8 +1544,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -1599,8 +1599,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -1649,8 +1649,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -1716,8 +1716,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -1765,8 +1765,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -1826,8 +1826,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                 switch (motionEvent.getAction()) {
 
                                                     case MotionEvent.ACTION_UP:
-                                                        if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                            ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                        if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                            ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                             return true;
                                                         }
                                                         int x = (int) motionEvent.getX();
@@ -1879,8 +1879,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -1940,8 +1940,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -1994,8 +1994,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -2043,8 +2043,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -2093,8 +2093,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -2143,8 +2143,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                     switch (motionEvent.getAction()) {
 
                                                         case MotionEvent.ACTION_UP:
-                                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                                 return true;
                                                             }
                                                             int x = (int) motionEvent.getX();
@@ -2190,11 +2190,11 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
 
                         if (s.contains("No value for data")) {
 //                        没有完善儿童信息
-                           // iv_mingci.setClickable(true);
+                            // iv_mingci.setClickable(true);
                             iv_mingci.setTag(true);
                             //iv_dongci.setClickable(false);
                             iv_dongci.setTag(false);
-                           // iv_juzi.setClickable(false);
+                            // iv_juzi.setClickable(false);
                             iv_juzi.setTag(false);
                             iv_dongci.setImageResource(R.drawable.dongci_dark);
                             iv_juzi.setImageResource(R.drawable.juzi_dark);
@@ -2207,8 +2207,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                             iv_dongci.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                        ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                    if (view.getTag() != null && !(boolean) view.getTag()) {
+                                        ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                         return;
                                     }
                                     showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
@@ -2218,8 +2218,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                             iv_juzi.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                        ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                    if (view.getTag() != null && !(boolean) view.getTag()) {
+                                        ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                         return;
                                     }
                                     showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
@@ -2236,8 +2236,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                     switch (motionEvent.getAction()) {
 
                                         case MotionEvent.ACTION_UP:
-                                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                                 return true;
                                             }
                                             int x = (int) motionEvent.getX();
@@ -2269,7 +2269,7 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                                 intent1.putExtra("position", 0);
                                                 if (isNetConnect) {
                                                     startActivity(intent1);
-                                                   // finish();
+                                                    // finish();
                                                 } else {
                                                     ToastUtil.showToast(BalloonActivity.this, "当前网络已断开");
 
@@ -2300,8 +2300,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                 switch (motionEvent.getAction()) {
 
                     case MotionEvent.ACTION_UP:
-                        if(view.getTag()!=null &&!(boolean) view.getTag()){
-                            ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                        if (view.getTag() != null && !(boolean) view.getTag()) {
+                            ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                             return true;
                         }
                         int x = (int) motionEvent.getX();
@@ -2348,8 +2348,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                 switch (motionEvent.getAction()) {
 
                     case MotionEvent.ACTION_UP:
-                        if(view.getTag()!=null &&!(boolean) view.getTag()){
-                            ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                        if (view.getTag() != null && !(boolean) view.getTag()) {
+                            ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                             return true;
                         }
                         int x = (int) motionEvent.getX();
@@ -2400,8 +2400,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                 switch (motionEvent.getAction()) {
 
                     case MotionEvent.ACTION_UP:
-                        if(view.getTag()!=null &&!(boolean) view.getTag()){
-                            ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                        if (view.getTag() != null && !(boolean) view.getTag()) {
+                            ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                             return true;
                         }
                         int x = (int) motionEvent.getX();
@@ -2455,8 +2455,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                 switch (motionEvent.getAction()) {
 
                     case MotionEvent.ACTION_UP:
-                        if(view.getTag()!=null &&!(boolean) view.getTag()){
-                            ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                        if (view.getTag() != null && !(boolean) view.getTag()) {
+                            ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                             return true;
                         }
                         int x = (int) motionEvent.getX();
@@ -2503,8 +2503,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                 switch (motionEvent.getAction()) {
 
                     case MotionEvent.ACTION_UP:
-                        if(view.getTag()!=null &&!(boolean) view.getTag()){
-                            ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                        if (view.getTag() != null && !(boolean) view.getTag()) {
+                            ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                             return true;
                         }
                         int x = (int) motionEvent.getX();
@@ -2568,8 +2568,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                 switch (motionEvent.getAction()) {
 
                     case MotionEvent.ACTION_UP:
-                        if(view.getTag()!=null &&!(boolean) view.getTag()){
-                            ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                        if (view.getTag() != null && !(boolean) view.getTag()) {
+                            ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                             return true;
                         }
                         int x = (int) motionEvent.getX();
@@ -2621,8 +2621,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                     switch (motionEvent.getAction()) {
 
                         case MotionEvent.ACTION_UP:
-                            if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                            if (view.getTag() != null && !(boolean) view.getTag()) {
+                                ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                 return true;
                             }
                             int x = (int) motionEvent.getX();
@@ -2681,8 +2681,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                         switch (motionEvent.getAction()) {
 
                             case MotionEvent.ACTION_UP:
-                                if(view.getTag()!=null &&!(boolean) view.getTag()){
-                                    ToastUtil.showToast(BalloonActivity.this,"暂未解锁");
+                                if (view.getTag() != null && !(boolean) view.getTag()) {
+                                    ToastUtil.showToast(BalloonActivity.this, "暂未解锁");
                                     return true;
                                 }
                                 int x = (int) motionEvent.getX();
@@ -2832,23 +2832,25 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
 //                                是否需要完善儿童个人信息(1:未完善 2:已完善)
                                 checking = assementReviewBean.getRemindType();
 
-                                if ("1".equals(assementReviewBean.getRemindType())){
-                                    if ("1".equals(assementReviewBean.getIsRemind())) {
-                                        String message = getResources().getString(R.string.new_password);
-                                        Spanned ss = Html.fromHtml(message);
-                                        // 未完善儿童信息，弹框让完善儿童信息
-                                        showIsRemindDialog("完善训练儿童信息", messageRemind, "去完善");
+                                if ("1".equals(assementReviewBean.getIsRemind())) {
+                                    String message = getResources().getString(R.string.new_password);
+                                    Spanned ss = Html.fromHtml(message);
+                                    // 未完善儿童信息，弹框让完善儿童信息
+                                    showIsRemindDialog("完善训练儿童信息", messageRemind, "去完善");
 
-                                        isFinished = false;
-                                    } else if ("2".equals(assementReviewBean.getIsRemind())) {
+                                    isFinished = false;
+                                } else if ("2".equals(assementReviewBean.getIsRemind())) {
 
-                                        if ("0".equals(assementReviewBean.getIsRecord())) {
-                                            // 没有填写过问卷，弹框完善问卷
-                                            showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
-                                        } else if ("1".equals(assementReviewBean.getIsRecord())) {
-                                            if ("1".equals(assementReviewBean.getAbcIsRemind()) || "1".equals(assementReviewBean.getPcdiIsRemind())) {
-                                                // 月度弹框，
+                                    if ("0".equals(assementReviewBean.getIsRecord())) {
+                                        // 没有填写过问卷，弹框完善问卷
+                                        showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
+                                    } else if ("1".equals(assementReviewBean.getIsRecord())) {
+                                        if ("1".equals(assementReviewBean.getAbcIsRemind()) || "1".equals(assementReviewBean.getPcdiIsRemind())) {
+                                            // 月度弹框，
+                                            if ("1".equals(assementReviewBean.getRemindType())) {
                                                 showIsRemindDialog("定期问卷评估提醒", "messageMonth", "去评估");
+                                            } else if ("2".equals(assementReviewBean.getRemindType())) {
+                                                showPingguDialog();
                                             }
                                         }
                                         isFinished = true;
@@ -2856,8 +2858,6 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                     }
 
 
-                                }else if ("2".equals(assementReviewBean.getRemindType())){
-                                    showPingguDialog();
                                 }
                             }
                         } else if (assementReviewBeanBaseBean.code == 205 || assementReviewBeanBaseBean.code == 209) {

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -19,13 +21,21 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.easychange.admin.smallrain.R;
+import com.easychange.admin.smallrain.utils.GoToLoginActivityUtils;
 import com.qlzx.mylibrary.base.BaseActivity;
+import com.qlzx.mylibrary.base.BaseSubscriber;
+import com.qlzx.mylibrary.bean.BaseBean;
+import com.qlzx.mylibrary.http.HttpHelp;
 import com.qlzx.mylibrary.util.PreferencesHelper;
 import com.qlzx.mylibrary.widget.LoadingLayout;
 
 
+import bean.AssementReviewBean;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import http.RemoteApi;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 import static android.view.KeyEvent.KEYCODE_BACK;
 
@@ -113,9 +123,35 @@ public class WebActivity extends AppCompatActivity {
     // 被JS调用的方法必须加入@JavascriptInterface注解
     @JavascriptInterface
     public void goBack() {
-        finish();
+        getIsRemindDialog(new PreferencesHelper(WebActivity.this).getToken());
         Log.e("webactivity","js调用的方法");
     }
+    public void getIsRemindDialog(String token) {
+        HttpHelp.getInstance().create(RemoteApi.class).getAssessmentReview(token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseSubscriber<BaseBean<AssementReviewBean>>(this, null) {
+                    @Override
+                    public void onNext(BaseBean<AssementReviewBean> assementReviewBeanBaseBean) {
+                        super.onNext(assementReviewBeanBaseBean);
+                        AssementReviewBean assementReviewBean = null;
+                        if (assementReviewBeanBaseBean.code == 200) {
+                            Log.e("webactivity","js调用的方法1");
+                            finish();
+                        } else if (assementReviewBeanBaseBean.code == 205 || assementReviewBeanBaseBean.code == 209) {
+                            Log.e("webactivity","js调用的方法2");
+                            GoToLoginActivityUtils.tokenFailureLoginOut(WebActivity.this);
+
+                        }
+                    }
+                    @Override
+                    public void onError(Throwable throwable) {
+                        super.onError(throwable);
+                        Log.e("webactivity","js调用的方法3");
+                        GoToLoginActivityUtils.tokenFailureLoginOut(WebActivity.this);
+                    }
+                });
+           }
 
     @JavascriptInterface
     public void goBacktwo() {
