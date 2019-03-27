@@ -189,7 +189,7 @@
                                 android:maxLength="13"
                                 android:gravity="center_vertical"
                                 android:paddingLeft="15dip"
-                                android:text="请选择目前尝试的训练及疗法"
+                                android:hint="请选择医学诊断"
                                 android:textColor="@color/text_tu"
                                 android:textSize="14dip"
                                 android:visibility="gone" />

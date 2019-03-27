@@ -239,14 +239,11 @@ public class JuZiChengZuXunLianActivity extends BaseActivity implements AsyncReq
                     byte[] bytes1 = (byte[]) msg.obj;
                     bitmap1 = BitmapFactory.decodeByteArray(bytes1, 0, bytes1.length);
                     Drawable drawable1 = new BitmapDrawable(bitmap1);
-
                     // 为AnimationDrawable添加动画帧
                     frameAnim1.addFrame(drawable1, 500);
-
                     if (frameAnim1.getNumberOfFrames() == split.length) {
                         frameAnim1.setOneShot(false);
                         ivImg.setBackground(frameAnim1);
-
                         doAnim();
                     }
                     break;
@@ -291,6 +288,7 @@ public class JuZiChengZuXunLianActivity extends BaseActivity implements AsyncReq
      * 异步get,直接调用
      */
     private void asyncGet(String IMAGE_URL, final int i) {
+        Log.i("liubiao", "asyncGet: "+IMAGE_URL);
         if (TextUtils.isEmpty(IMAGE_URL)) return;
 
         OkHttpClient client = new OkHttpClient();

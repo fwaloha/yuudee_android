@@ -13,6 +13,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -304,7 +305,7 @@ public class PerfectionChildrenInfoActivity extends BaseActivity implements City
      *
      * @param editText
      */
-    public  void setEditTextInhibitInputSpeChat(EditText editText) {
+    public void setEditTextInhibitInputSpeChat(EditText editText) {
         InputFilter filter = new InputFilter() {
             @Override
             public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
@@ -554,6 +555,7 @@ public class PerfectionChildrenInfoActivity extends BaseActivity implements City
                     etFirstLanguage.setFocusableInTouchMode(true);
 
                     etFirstLanguage.requestFocus();//获取焦点 光标出现
+                    showSoftKeyboard(etFirstLanguage, mContext);
 
                     currentChoosePosition = i;
                 } else {
@@ -673,6 +675,7 @@ public class PerfectionChildrenInfoActivity extends BaseActivity implements City
                     });
 
                     etFirstLanguage.requestFocus();//获取焦点 光标出现
+                    showSoftKeyboard(etFirstLanguage, mContext);
 
                     currentChoosePosition = i;
                 } else {
@@ -805,6 +808,7 @@ public class PerfectionChildrenInfoActivity extends BaseActivity implements City
 
                     etYixueZhenduan.requestFocus();//获取焦点 光标出现
 
+                    showSoftKeyboard(etYixueZhenduan, mContext);
                     currentChoosePosition = 4;
 
                 } else {
@@ -817,6 +821,17 @@ public class PerfectionChildrenInfoActivity extends BaseActivity implements City
             }
         });
         picker.show();
+    }
+
+    public void showSoftKeyboard(View view, Context mContext) {
+        if (view != null) {
+            view.postDelayed(() -> {
+                if (view.requestFocus()) {
+                    InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
+                }
+            }, 200);
+        }
     }
 
     private void initView() {

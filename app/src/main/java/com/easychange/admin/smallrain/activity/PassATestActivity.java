@@ -14,7 +14,6 @@ import com.easychange.admin.smallrain.MyApplication;
 import com.easychange.admin.smallrain.R;
 import com.easychange.admin.smallrain.entity.CustomsClearanceSuccessBean;
 import com.qlzx.mylibrary.util.EventBusUtil;
-import com.qlzx.mylibrary.util.GlideUtil;
 import com.qlzx.mylibrary.util.PreferencesHelper;
 
 import bean.JuzifenjieGuoGuan;
