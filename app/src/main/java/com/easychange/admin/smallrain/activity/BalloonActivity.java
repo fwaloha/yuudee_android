@@ -30,7 +30,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.easychange.admin.smallrain.MainActivity;
 import com.easychange.admin.smallrain.MyApplication;
@@ -170,7 +169,7 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
     IntentFilter mFilter = new IntentFilter();
     boolean isNetConnect = true;
     boolean isShowAccess = true;
-    String checking = "1";
+    String remindType = "1";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -2829,8 +2828,8 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                             assementReviewBean = assementReviewBeanBaseBean.data;
                             if (assementReviewBean != null) {
 
-//                                是否需要完善儿童个人信息(1:未完善 2:已完善)
-                                checking = assementReviewBean.getRemindType();
+//                                如果需要弹框提醒判断提醒类型( 1 :正常定时提醒2:通关提醒)
+                                remindType = assementReviewBean.getRemindType();
 
                                 if ("1".equals(assementReviewBean.getIsRemind())) {
                                     String message = getResources().getString(R.string.new_password);
@@ -2845,11 +2844,12 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                         // 没有填写过问卷，弹框完善问卷
                                         showIsRemindDialog("问卷评估提醒", messageAbc, "去评估");
                                     } else if ("1".equals(assementReviewBean.getIsRecord())) {
-                                        if ("1".equals(assementReviewBean.getAbcIsRemind()) || "1".equals(assementReviewBean.getPcdiIsRemind())) {
+                                        if ("1".equals(assementReviewBean.getAbcIsRemind()) || "1".equals(assementReviewBean.getPcdiIsRemind())||
+                                                "3".equals(assementReviewBean.getAbcIsRemind()) || "3".equals(assementReviewBean.getPcdiIsRemind())) {
                                             // 月度弹框，
                                             if ("1".equals(assementReviewBean.getRemindType())) {
                                                 showIsRemindDialog("定期问卷评估提醒", "messageMonth", "去评估");
-                                            } else if ("2".equals(assementReviewBean.getRemindType())) {
+                                            } else if ("2".equals(assementReviewBean.getRemindType())) {// 通关填写问卷提醒
                                                 showPingguDialog();
                                             }
                                         }

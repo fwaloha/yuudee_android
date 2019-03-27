@@ -56,15 +56,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    dexOptions {
-        dexInProcess true
-        preDexLibraries true
-        javaMaxHeapSize "6g"//越大越好
-        //  incremental true
-    }
-    //避开图片检查，打包的时候老是报aapt
-    aaptOptions.cruncherEnabled = false
-    aaptOptions.useNewCruncher = false
 }
 
 dependencies {
@@ -117,5 +108,10 @@ dependencies {
 
     implementation 'com.tencent.bugly:crashreport:2.8.6.0'
     implementation 'com.tencent.bugly:nativecrashreport:3.6.0.1'
+
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+    // Optional, if you use support library fragments:
+    debugImplementation 'com.squareup.leakcanary:leakcanary-support-fragment:1.6.3'
 
 }

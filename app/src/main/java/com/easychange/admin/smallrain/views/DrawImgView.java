@@ -42,7 +42,6 @@ public class DrawImgView extends View {
     private Paint paint;
     private int hascanvasimg;
     private int paintimg;
-    private Bitmap paintbitmap;
     private OverBack overBack;
 
 
@@ -100,7 +99,7 @@ public class DrawImgView extends View {
             bitmap = BitmapFactory.decodeResource(getResources(), hascanvasimg);
         }
         if (paintimg != -1) {
-            paintbitmap = BitmapFactory.decodeResource(getResources(), paintimg);
+//            Bitmap paintbitmap = BitmapFactory.decodeResource(getResources(), paintimg);
         }
 
         //onmeasure可能走多次，ondraw创建对象更不好 所以把画笔路径new在这里
@@ -108,6 +107,7 @@ public class DrawImgView extends View {
     }
 
     public void setcanvasImg(Bitmap bitmap) {
+        releaseBitmap(this.bitmap);
         this.bitmap = bitmap;
 //        必须先调用 requestLayout() 方法再调用 invalidate （）方法
         requestLayout();
@@ -171,6 +171,7 @@ public class DrawImgView extends View {
 //    at com.easychange.admin.smallrain.views.DrawImgView.onMeasure(DrawImgView.java:155)
     private void newpaint() {
         //根据参数创建一个新的bitmap
+        releaseBitmap(newbitmap);
         newbitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         //保存bitmap中所有像素点的数组
         bmpixels = new int[newbitmap.getWidth() * newbitmap.getHeight()];
@@ -213,6 +214,7 @@ public class DrawImgView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        if (newbitmap !=null)
         canvas.drawBitmap(newbitmap, 0, 0, null);
 
         if (mPath == null) {
@@ -262,7 +264,10 @@ public class DrawImgView extends View {
         Matrix matrix = new Matrix();
         matrix.postScale(scalewidth, scaleheight);
         // 得到新的图片
-        return Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
+
+        Bitmap r = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
+        bm.recycle();
+        return r;
     }
 
     /*项目需求是不能手指触摸涂鸦，所以我就把这里面的代码注释了*/
@@ -476,5 +481,19 @@ public class DrawImgView extends View {
         void three();
 
         void onEnd();
+    }
+
+    private void releaseBitmap(Bitmap bitmap) {
+        if (bitmap != null && !bitmap.isRecycled()) {
+            bitmap.recycle();
+            bitmap = null;
+        }
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        releaseBitmap(bitmap);
+        releaseBitmap(newbitmap);
     }
 }

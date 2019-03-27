@@ -9,6 +9,7 @@ import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -64,6 +65,7 @@ public class SplashActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_SETTING = 300;
     private String token;
     private boolean isInState = true;
+    private boolean noImg;
     /**
      * Rationale支持，这里自定义对话框。
      */
@@ -231,10 +233,10 @@ public class SplashActivity extends AppCompatActivity {
                         super.onNext(imageBeanBaseBean);
                         if (imageBeanBaseBean.code == 200) {
                             SplashPicBean splashPicBean = imageBeanBaseBean.data;
-                            if (splashPicBean != null) {
+                            if (splashPicBean != null && !TextUtils.isEmpty(splashPicBean.getImage())) {
                                 GlideUtil.display(SplashActivity.this, splashPicBean.getImage(), ivSplansh);
                             } else {
-                                //  GlideUtil.display(SplashActivity.this,R.drawable.splash,ivSplansh);
+                                noImg = true;
                             }
 
                             getIsTokenUsefull(new PreferencesHelper(SplashActivity.this).getToken());
@@ -374,7 +376,11 @@ public class SplashActivity extends AppCompatActivity {
 //                                        gotoLogin();
                                     }
 
-                                    mCountDown.start();
+                                    if (noImg) {
+                                        mCountDown.onFinish();
+                                    } else {
+                                        mCountDown.start();
+                                    }
 
                                 } catch (JSONException e) {
                                     e.printStackTrace();

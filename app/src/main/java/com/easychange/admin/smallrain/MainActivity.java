@@ -302,11 +302,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        EventBusUtil.post(new RegisterDestroyOtherBean());
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            EventBusUtil.post(new RegisterDestroyOtherBean());
 
-        Intent intent = new Intent(MainActivity.this, BalloonActivity.class);
-        startActivity(intent);
-        finish();
+            Intent intent = new Intent(MainActivity.this, BalloonActivity.class);
+            startActivity(intent);
+            finish();
+        }
         return super.onKeyDown(keyCode, event);
     }
 

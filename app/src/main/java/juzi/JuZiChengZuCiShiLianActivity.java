@@ -2147,4 +2147,11 @@ public class JuZiChengZuCiShiLianActivity extends BaseActivity implements AsyncR
 
     }
 
+    private void releaseBitmap(Bitmap bitmap) {
+        if (bitmap != null && !bitmap.isRecycled()) {
+            bitmap.recycle();
+            bitmap = null;
+        }
+    }
+
 }
