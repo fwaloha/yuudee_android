@@ -399,8 +399,8 @@ public class PinTuAllFlyActivity extends BaseActivity implements View.OnClickLis
             @Override
             public void run() {
                 tvMoney.setText("x " + 0);
-                tvMoney.setVisibility(View.GONE);
-                ivXiaolian.setVisibility(View.GONE);
+//                tvMoney.setVisibility(View.GONE);
+//                ivXiaolian.setVisibility(View.GONE);
 
             }
         },2000);

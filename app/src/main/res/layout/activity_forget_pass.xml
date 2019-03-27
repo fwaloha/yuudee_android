@@ -83,7 +83,6 @@
             android:orientation="horizontal">
 
             <RelativeLayout
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <!--滑块验证-->
@@ -96,7 +95,6 @@
 
                     <com.easychange.admin.smallrain.views.VerificationSeekBar
                         android:id="@+id/seekbar_sb"
-
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:clickable="false"
@@ -129,12 +127,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="17dip"
+                    android:visibility="gone"
                     android:layout_marginRight="17dip"
                     android:background="@drawable/border_edt_bg"
-
                     android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/edit_security_code"
@@ -142,11 +139,12 @@
                         android:layout_height="43dip"
                         android:background="@null"
                         android:drawableLeft="@drawable/yanzhengma"
-                        android:drawablePadding="15dip"
+                        android:drawablePadding="10dip"
                         android:hint="请输入短信验证码"
                         android:inputType="number"
                         android:maxLength="13"
-                        android:paddingHorizontal="28dip"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
                         android:textColor="@color/text_tu"
                         android:textColorHint="@color/text_tu"
                         android:textSize="14dip" />
@@ -163,7 +161,7 @@
                         android:padding="5dp"
                         android:text="重新发送"
                         android:textColor="@color/text_tu"
-                        android:textSize="14sp" />
+                        android:textSize="13sp" />
                 </RelativeLayout>
 
                 <!--  <LinearLayout
@@ -228,7 +226,8 @@
                 android:inputType="textPassword"
                 android:maxLength="13"
                 android:digits="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
-                android:paddingHorizontal="28dip"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:textColor="@color/text_tu"
                 android:textColorHint="@color/text_tu"
                 android:textSize="14dip" />
@@ -256,7 +255,8 @@
                 android:inputType="textPassword"
                 android:maxLength="13"
                 android:digits="1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
-                android:paddingHorizontal="28dip"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:textColor="@color/text_tu"
                 android:textColorHint="@color/text_tu"
                 android:textSize="14dip" />

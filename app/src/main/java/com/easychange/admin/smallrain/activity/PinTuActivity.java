@@ -343,8 +343,8 @@ public class PinTuActivity extends BaseActivity implements View.OnClickListener,
             public void run() {
                 tvMoney.setText("x " + (anInt1 - 10));
                 if ((anInt1-10)==0){
-                    ivXiaolian.setVisibility(View.GONE);
-                    tvMoney.setVisibility(View.GONE);
+//                    ivXiaolian.setVisibility(View.GONE);
+//                    tvMoney.setVisibility(View.GONE);
                 } else {
                     ivXiaolian.setVisibility(View.VISIBLE);
                     tvMoney.setVisibility(View.VISIBLE);

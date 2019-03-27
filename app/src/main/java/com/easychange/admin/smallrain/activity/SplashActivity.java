@@ -146,7 +146,7 @@ public class SplashActivity extends AppCompatActivity {
 
         LogUtil.d("SplashActivity token--" + token);
         getIvfromServe("1");
-        getIsTokenUsefull(new PreferencesHelper(SplashActivity.this).getToken());
+
 
         JPushInterface.init(this);
     }
@@ -231,11 +231,14 @@ public class SplashActivity extends AppCompatActivity {
                             }
 
                         }
+                        getIsTokenUsefull(new PreferencesHelper(SplashActivity.this).getToken());
                     }
 
                     @Override
                     public void onError(Throwable throwable) {
                         super.onError(throwable);
+                        noImg = true;
+                        getIsTokenUsefull(new PreferencesHelper(SplashActivity.this).getToken());
                     }
                 });
 

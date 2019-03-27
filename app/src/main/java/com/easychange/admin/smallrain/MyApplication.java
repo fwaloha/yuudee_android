@@ -76,7 +76,7 @@ public class MyApplication extends Application {
         super.onCreate();
         if (!getApplicationInfo().packageName.equals(getCurProcessName(this))) return;
         //建议在测试阶段建议设置成true，发布时设置为fals
-        CrashReport.initCrashReport(getApplicationContext(), "24523e10a7", true);
+        CrashReport.initCrashReport(getApplicationContext(), "24523e10a7", false);
         application = this;
         //初始化mainHandler
         mainHandler = new Handler();
