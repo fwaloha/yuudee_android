@@ -1,5 +1,6 @@
 package com.easychange.admin.smallrain;
 
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
@@ -73,12 +74,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (LeakCanary.isInAnalyzerProcess(this)) {
-            // This process is dedicated to LeakCanary for heap analysis.
-            // You should not init your app in this process.
-            return;
-        }
-        LeakCanary.install(this);
+        if (!getApplicationInfo().packageName.equals(getCurProcessName(this))) return;
         //建议在测试阶段建议设置成true，发布时设置为fals
         CrashReport.initCrashReport(getApplicationContext(), "24523e10a7", true);
         application = this;
@@ -95,17 +91,9 @@ public class MyApplication extends Application {
         juziChengzuGuan = new JuziChengzuGuan();
         juzifenjieGuoGuan = new JuzifenjieGuoGuan();
 
-        JPushInterface.setDebugMode(true);
-        JPushInterface.init(this);
-
-//        String registrationID = JPushInterface.getRegistrationID(getApplicationContext());
-//        Log.e("registrationID", registrationID);
-
         UMConfigure.init(this, "5bfaaccaf1f556067e000315"
                 , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0
 
-//        PlatformConfig.setWeixin("wxdc1e388c3822c80b", "3baf1193c85774b3fd9d18447d76cab0");
-//        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
         PlatformConfig.setWeixin("wx29c790d4f2786062", "6f61834f3f5b4c90c357d0655f80b8c1");
         PlatformConfig.setQQZone("1106732218", "3Umf2GOQvvZjKVLY");
 
@@ -115,16 +103,7 @@ public class MyApplication extends Application {
             helper.saveString("xiaoyudi", "currentGifListData",  "0,1,2,3,4,5,6,7,8,9");
         }
 
-        ForegroundCallbacks.init(this);
-        ForegroundCallbacks.get().addListener(new ForegroundCallbacks.Listener() {
-            @Override
-            public void onBecameForeground() {
-            }
 
-            @Override
-            public void onBecameBackground() {
-            }
-        });
     }
 
     public boolean isTwentyMinutes = false;
@@ -212,6 +191,19 @@ public class MyApplication extends Application {
 
     public static MyApplication getApplication() {
         return application;
+    }
+
+    public static String getCurProcessName(Context context) {
+        int pid = android.os.Process.myPid();
+        ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
+        if (manager != null) {
+            for (ActivityManager.RunningAppProcessInfo appProcess : manager.getRunningAppProcesses()) {
+                if (appProcess.pid == pid) {
+                    return appProcess.processName;
+                }
+            }
+        }
+        return null;
     }
 }
 

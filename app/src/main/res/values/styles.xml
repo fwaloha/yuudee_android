@@ -114,4 +114,11 @@
     </style>
     <!-- Text style "" -->
     <!-- Add this snippet to styles.xml. -->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/splash_icon</item>
+    </style>
 </resources>

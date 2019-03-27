@@ -44,6 +44,7 @@ import java.util.concurrent.TimeUnit;
 import bean.SplashPicBean;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.jpush.android.api.JPushInterface;
 import dongci.DongciTestOneActivity;
 import http.RemoteApi;
 import http.Setting;
@@ -119,6 +120,18 @@ public class SplashActivity extends AppCompatActivity {
         closeAndroidPDialog();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+
+        ForegroundCallbacks.init(getApplication());
+        ForegroundCallbacks.get().addListener(new ForegroundCallbacks.Listener() {
+            @Override
+            public void onBecameForeground() {
+            }
+
+            @Override
+            public void onBecameBackground() {
+            }
+        });
+
         ForegroundCallbacks.get().addListener(forListener);
         ButterKnife.bind(this);
         ActionBar supportActionBar = getSupportActionBar();
@@ -133,31 +146,9 @@ public class SplashActivity extends AppCompatActivity {
 
         LogUtil.d("SplashActivity token--" + token);
         getIvfromServe("1");
+        getIsTokenUsefull(new PreferencesHelper(SplashActivity.this).getToken());
 
-//        Intent intent = new Intent(SplashActivity.this, MingciOneActivity.class);
-//        intent.putExtra("position", 9);
-//        startActivity(intent);
-
-//        Intent intent = new Intent(SplashActivity.this, JuZiFeiJieXunLianActivityFourClick.class);
-//        startActivity(intent);
-
-//        Intent intent = new Intent(SplashActivity.this, DongciTrainOneActivity.class);
-//        startActivity(intent);
-
-//        Intent intent = new Intent(SplashActivity.this, DongciTrainOneActivity.class);
-//        startActivity(intent);
-
-//        Intent intent = new Intent(SplashActivity.this, JuZiChengZuXunLianActivity.class);
-//        intent.putExtra("position", 9);
-//        startActivity(intent);
-
-//        Intent intent = new Intent(SplashActivity.this, JuZiFeiJieXunLianActivityFourClick.class);
-//        intent.putExtra("position", 9);
-//        startActivity(intent);
-
-//        Intent intent = new Intent(SplashActivity.this, DongciTrainOneActivity.class);
-//        intent.putExtra("position", 9);
-//        startActivity(intent);
+        JPushInterface.init(this);
     }
 
     private String isLogin = "1";
@@ -239,15 +230,12 @@ public class SplashActivity extends AppCompatActivity {
                                 noImg = true;
                             }
 
-                            getIsTokenUsefull(new PreferencesHelper(SplashActivity.this).getToken());
                         }
                     }
 
                     @Override
                     public void onError(Throwable throwable) {
                         super.onError(throwable);
-                     //   requestPermission();
-                        getIsTokenUsefull(new PreferencesHelper(SplashActivity.this).getToken());
                     }
                 });
 
