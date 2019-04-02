@@ -8,6 +8,8 @@ import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -582,6 +584,27 @@ public class DongciActivity extends BaseActivity implements View.OnClickListener
         handler.removeCallbacksAndMessages(null);
         if (player != null)
             player.stop();
+        freeAnimationDrawable(frameAnim);
+        freeAnimationDrawable(frameAnim1);
+    }
+
+    /**
+     * 释放AnimationDrawable占用的内存
+     *
+     *
+     * */
+    private void freeAnimationDrawable(AnimationDrawable animationDrawable) {
+        if (animationDrawable == null) return;
+        animationDrawable.stop();
+        for (int i = 0; i < animationDrawable.getNumberOfFrames(); ++i){
+            Drawable frame = animationDrawable.getFrame(i);
+            if (frame instanceof BitmapDrawable) {
+                ((BitmapDrawable)frame).getBitmap().recycle();
+            }
+            frame.setCallback(null);
+        }
+
+        animationDrawable.setCallback(null);
     }
 
     @Override

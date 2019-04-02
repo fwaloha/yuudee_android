@@ -792,7 +792,8 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                         mediaPlayer.reset();
                         mediaPlayer.release();
                         mediaPlayer = null;
-                    }   isPlayingVoice = false;
+                    }
+                    isPlayingVoice = false;
 
                     if (voiceListData.size() != 0) {
                         voiceListData.remove(0);
@@ -820,7 +821,8 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                         mediaPlayer.reset();
                         mediaPlayer.release();
                         mediaPlayer = null;
-                    }   Log.e("bofang", "onError: i" + i + "i1" + i1);
+                    }
+                    Log.e("bofang", "onError: i" + i + "i1" + i1);
                     return false;
                 }
             });
@@ -834,7 +836,8 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                 mediaPlayer.reset();
                 mediaPlayer.release();
                 mediaPlayer = null;
-            }Log.e("bofang", "playLocalVoiceOnLineGroupRecord: IOException" + e.toString());
+            }
+            Log.e("bofang", "playLocalVoiceOnLineGroupRecord: IOException" + e.toString());
             e.printStackTrace();
         }
 
@@ -928,12 +931,14 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                 }
 
                 if (null != player && player.isPlaying()) {
-                    voiceListData.remove(0);
+                    if (!voiceListData.isEmpty())
+                        voiceListData.remove(0);
                     player.stop();
                     isPlayingVoice = false;
                 }
 
                 if (null != mediaPlayer && mediaPlayer.isPlaying()) {
+                    if (!voiceListData.isEmpty())
                     voiceListData.remove(0);
                     mediaPlayer.stop();
                     isPlayingVoice = false;
@@ -1149,7 +1154,7 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                 llClickLayout.addView(inflate);
             }
             ImageView iv_click_pic = (ImageView) inflate.findViewById(R.id.iv_click_pic);
-            Log.e("mingciurlpic",nounTestBean.getList().get(0).getCardColorImage());
+            Log.e("mingciurlpic", nounTestBean.getList().get(0).getCardColorImage());
             if (i == 0) {
                 GlideUtil.display(MingciTestOneActivity.this, nounTestBean.getList().get(0).getCardColorImage(), iv_click_pic);
             } else if (i == 1) {
@@ -1655,7 +1660,8 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                         mediaPlayer.reset();
                         mediaPlayer.release();
                         mediaPlayer = null;
-                    }}
+                    }
+                }
             });
             mediaPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
                 @Override
@@ -1669,7 +1675,8 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                         mediaPlayer.reset();
                         mediaPlayer.release();
                         mediaPlayer = null;
-                    }  Log.e("bofang", "onError: i" + i + "i1" + i1);
+                    }
+                    Log.e("bofang", "onError: i" + i + "i1" + i1);
                     return false;
                 }
             });
@@ -1683,7 +1690,8 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                 mediaPlayer.reset();
                 mediaPlayer.release();
                 mediaPlayer = null;
-            }Log.e("bofang", "playLocalVoiceOnLineGroupRecord: IOException" + e.toString());
+            }
+            Log.e("bofang", "playLocalVoiceOnLineGroupRecord: IOException" + e.toString());
             e.printStackTrace();
         }
 
@@ -1753,7 +1761,8 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                 playerDoWhatThing.reset();
                 playerDoWhatThing.release();
                 playerDoWhatThing = null;
-            }  Log.e("bofang", "playLocalVoiceOnLineGroupRecord: IOException" + e.toString());
+            }
+            Log.e("bofang", "playLocalVoiceOnLineGroupRecord: IOException" + e.toString());
             e.printStackTrace();
         }
     }
@@ -1805,7 +1814,8 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                         player.reset();
                         player.release();
                         player = null;
-                    } isBackgroundFinished = true;
+                    }
+                    isBackgroundFinished = true;
 
                     if (isAnimationFinished && !isYetUploadData && !isQuitActivity) {
                         stayTime = (System.currentTimeMillis() - startTimeMillis) / 1000 + "";
@@ -1828,7 +1838,8 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                         player.reset();
                         player.release();
                         player = null;
-                    }   Log.e("bofang", "onError: i" + i + "i1" + i1);
+                    }
+                    Log.e("bofang", "onError: i" + i + "i1" + i1);
                     return false;
                 }
             });
@@ -1842,7 +1853,8 @@ public class MingciTestOneActivity extends BaseActivity implements View.OnClickL
                 player.reset();
                 player.release();
                 player = null;
-            }Log.e("bofang", "playLocalVoiceOnLineGroupRecord: IOException" + e.toString());
+            }
+            Log.e("bofang", "playLocalVoiceOnLineGroupRecord: IOException" + e.toString());
             e.printStackTrace();
         }
     }

@@ -490,6 +490,11 @@ public class DrawImgView extends View {
         }
     }
 
+    public void recycle() {
+        releaseBitmap(bitmap);
+        releaseBitmap(newbitmap);
+    }
+
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();

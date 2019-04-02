@@ -74,12 +74,20 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        LeakCanary.install(this);
+        // Normal app init code...
         if (!getApplicationInfo().packageName.equals(getCurProcessName(this))) return;
         //建议在测试阶段建议设置成true，发布时设置为fals
         CrashReport.initCrashReport(getApplicationContext(), "24523e10a7", false);
         application = this;
         //初始化mainHandler
         mainHandler = new Handler();
+        ForegroundCallbacks.init(this);
 
         initOkhttp();
 

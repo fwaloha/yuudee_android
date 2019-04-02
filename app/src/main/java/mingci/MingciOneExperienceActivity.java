@@ -1284,7 +1284,7 @@ public class MingciOneExperienceActivity extends BaseActivity implements AsyncRe
     @Override
     protected void onDestroy() {
         EventBusUtil.unregister(this);
-
+        drawImg.recycle();
 
         isFinish = true;
         isQuitActivity = true;

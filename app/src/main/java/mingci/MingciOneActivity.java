@@ -9,13 +9,13 @@ import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.text.TextUtils;
 import android.util.Log;
@@ -25,11 +25,9 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AbsListView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -49,7 +47,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.qlzx.mylibrary.util.EventBusUtil;
 import com.qlzx.mylibrary.util.PreferencesHelper;
-import com.qlzx.mylibrary.util.ToastUtil;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.greenrobot.eventbus.Subscribe;
@@ -569,15 +566,19 @@ public class MingciOneActivity extends BaseActivity implements AsyncRequest {
             public void onScreenOff() {
                 isQuitActivity = true;
 
-                if (null != mediaPlayer && mediaPlayer.isPlaying()) {
-                    if (voiceListData.size() != 0) {
-                        voiceListData.remove(0);
+                try {
+                    if (null != mediaPlayer && mediaPlayer.isPlaying()) {
+                        if (voiceListData.size() != 0) {
+                            voiceListData.remove(0);
+                        }
+                        mediaPlayer.stop();
                     }
-                    mediaPlayer.stop();
-                }
 
-                if (null != player && player.isPlaying()) {
-                    player.stop();
+                    if (null != player && player.isPlaying()) {
+                        player.stop();
+                    }
+                } catch (IllegalStateException e) {
+                    e.printStackTrace();
                 }
             }
         });
@@ -1454,6 +1455,7 @@ public class MingciOneActivity extends BaseActivity implements AsyncRequest {
 
 
     private void startmoveText() {
+        if (tvPaint == null) return;
         //下面黄字飞上来
         int x1 = MyUtils.dip2px(this, (85 - 35) / 2 + 25);
 //        int screenHeight = MyUtils.getScreenHeight(MyApplication.getGloableContext());
@@ -1471,7 +1473,7 @@ public class MingciOneActivity extends BaseActivity implements AsyncRequest {
 
 
     /*文字飞的动画*/
-    public void startTextMoveAnimation(View view, int x, int y) {
+    public void startTextMoveAnimation(@NonNull final View view, int x, int y) {
         ObjectAnimator obx = ObjectAnimator.ofFloat(view, "translationX", -x);
         obx.setDuration(1000);
         ObjectAnimator oby = ObjectAnimator.ofFloat(view, "translationY", -y);
@@ -1488,7 +1490,7 @@ public class MingciOneActivity extends BaseActivity implements AsyncRequest {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
-
+                if (view != null)
                 view.setVisibility(View.GONE);
                 View tv_content1 = llTextParent.getChildAt(0);//自己文本
                 tv_content1.setVisibility(View.VISIBLE);
@@ -1578,7 +1580,7 @@ public class MingciOneActivity extends BaseActivity implements AsyncRequest {
     protected void onDestroy() {
         ReleasePlayer();
         EventBusUtil.unregister(this);
-
+        drawImg.recycle();
         if (null != foregroundCallbackslistener) {
             ForegroundCallbacks.get().removeListener(foregroundCallbackslistener);
             foregroundCallbackslistener = null;
@@ -1623,6 +1625,7 @@ public class MingciOneActivity extends BaseActivity implements AsyncRequest {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
+                if ( handler == null) return;
                 Message message = handler.obtainMessage();
                 if (response.isSuccessful()) {
                     if (i == 1) {

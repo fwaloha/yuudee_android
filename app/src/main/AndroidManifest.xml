@@ -202,7 +202,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:launchMode="singleTop"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
             android:name=".login.RegisterActivity"
