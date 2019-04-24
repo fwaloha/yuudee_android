@@ -14,7 +14,7 @@
             android:textColor="@color/white"
             android:layout_marginLeft="30dip"
             android:layout_centerVertical="true"
-            android:text="问卷评估"
+            android:text="问卷评估问卷"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -58,7 +58,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/longbutton3x"
-                    android:text="PCDI问卷"
+                    android:text="语言评估问卷"
                     android:gravity="center"
                     android:paddingBottom="10dp"
                     android:textSize="16sp"
@@ -84,7 +84,7 @@
                         android:lineSpacingExtra="6dp"
                         android:textSize="13sp"
                         android:textColor="#14101e"
-                        android:text="PCDI量表是由父母填写，测量16个月以上说普通话的儿童早期语言发展的评估量表。目前已在世界各地广泛使用。"/>
+                        android:text="语言评估问卷量表是由父母填写，测量16个月以上说普通话的儿童早期语言发展的评估量表。目前已在世界各地广泛使用。"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -146,7 +146,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/longbutton3x"
-                    android:text="ABC问卷"
+                    android:text="行为评估问卷"
                     android:gravity="center"
                     android:paddingBottom="10dp"
                     android:textSize="16sp"
@@ -172,7 +172,7 @@
                         android:lineSpacingExtra="6dp"
                         android:textSize="13sp"
                         android:textColor="#14101e"
-                        android:text="ABC量表又称自闭症行为量表，是一份由他人报告的形式，用于检测儿童是否患有自闭症的一个简单的方法，只能做为一个参考诊断依据，并不能单一地做为判定诊断结果的依据。"/>
+                        android:text="行为评估问卷量表又称自闭症行为量表，是一份由他人报告的形式，用于检测儿童是否患有自闭症的一个简单的方法，只能做为一个参考诊断依据，并不能单一地做为判定诊断结果的依据。"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_marginTop="5dp"

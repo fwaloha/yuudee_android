@@ -170,6 +170,8 @@ public class LoginActivity extends BaseActivity implements AsyncRequest {//联�
         EventBusUtil.register(this);
     }
 
+
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -239,6 +241,7 @@ public class LoginActivity extends BaseActivity implements AsyncRequest {//联�
                         String currentKjPhone = trim.replace(" ", "");
                         efficacyCode(currentKjPhone, districeId, s);
                     } else {
+                        Log.i("liubiao", "afterTextChanged: "+s+"==="+rightCode);
                         if (rightCode.equals(s)) {
                             tvKjSureLogin.setTextColor(getResources().getColor(R.color.white));
                             tvKjSureLogin.setEnabled(true);
@@ -299,22 +302,26 @@ public class LoginActivity extends BaseActivity implements AsyncRequest {//联�
 
             @Override
             public void afterTextChanged(Editable editable) {
-
-            }
-        });
-        edtPhoneNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(!hasFocus){
-                    String trim = edtPhoneNumber.getText().toString().trim();
-                    String currentKjPhone = trim.replace(" ", "");
-//                用户不存在，请先注册
-                    if (!TextUtils.isEmpty(currentKjPhone)){
-                        phoneIsRegister(currentKjPhone, districeId);
-                    }
+                String trim = editable.toString().trim();
+                String currentKjPhone = trim.replace(" ", "");
+//用户不存在，请先注册
+                if (!TextUtils.isEmpty(currentKjPhone)){
+                    phoneIsRegister(currentKjPhone, districeId);
                 }
             }
         });
+        /*edtPhoneNumber.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus){
+                    hasFocus=false;
+                }
+                if(!hasFocus){
+
+               }
+            }
+        });*/
+
         edtKjNumber.addTextChangedListener(new TextWatcher() {//快速的手机号
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -403,9 +410,7 @@ public class LoginActivity extends BaseActivity implements AsyncRequest {//联�
                 }else {
                     phoneIsRegisterQj(currentKjPhone, districeId);
                 }
-
                 String s = editable.toString();
-
                 if (!TextUtils.isEmpty(s) && s.length() >= 4&&iskjphone) {
                     verifyimageCode(s);
                 }
@@ -438,7 +443,6 @@ public class LoginActivity extends BaseActivity implements AsyncRequest {//联�
                             PhoneIsRegisterBean data = baseBean.data;
                             boolean isRegister = data.isIsRegister();
                             if (isRegister) {//已经注册了
-
                                 yetRegister = true;
                                 tvLogin.setEnabled(true);
 //                                输入手机号后，登录按钮应该点亮
@@ -458,7 +462,7 @@ public class LoginActivity extends BaseActivity implements AsyncRequest {//联�
                     @Override
                     public void onError(Throwable throwable) {
                         super.onError(throwable);
-                        ToastUtil.showToast(LoginActivity.this,   "手机号码格式不正确");
+                        //ToastUtil.showToast(LoginActivity.this,   "手机号码格式不正确");
                     }
                 });
     }
@@ -734,7 +738,6 @@ public class LoginActivity extends BaseActivity implements AsyncRequest {//联�
         String url = Setting.verifyimageCode();
         HashMap<String, String> stringStringHashMap = new HashMap<>();
         stringStringHashMap.put("imageCode", imageCode);//
-
         OkHttpUtils
                 .post().params(stringStringHashMap)//入参
                 .url(url)//接口地址
@@ -961,7 +964,6 @@ public class LoginActivity extends BaseActivity implements AsyncRequest {//联�
 
                             llMyImageCode.setVisibility(View.GONE);
                             llGetVerificationCode.setVisibility(View.VISIBLE);
-
                             String phone11 = edtKjNumber.getText().toString();
                             String currentKjPhone1 = phone11.replace(" ", "");
 
@@ -1046,6 +1048,5 @@ public class LoginActivity extends BaseActivity implements AsyncRequest {//联�
 
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
-
     }
 }

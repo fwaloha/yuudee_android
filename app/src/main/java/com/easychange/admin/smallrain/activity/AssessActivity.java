@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -25,6 +24,7 @@ import com.qlzx.mylibrary.http.HttpHelp;
 import com.qlzx.mylibrary.util.PreferencesHelper;
 
 import bean.AssementReviewBean;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
@@ -34,19 +34,23 @@ import rx.schedulers.Schedulers;
 
 public class AssessActivity extends AppCompatActivity {
     Unbinder unbinder;
+    @BindView(R.id.btn_pcdi)
+    Button btnPcdi;
+    @BindView(R.id.btn_abc)
+    Button btnAbc;
     private Dialog mDialog;
     private String abcIsRemind = "";
     private String pcdiIsRemind = "";
-    private String abcurl = Constants.HOST+"xiaoyudi/pages/abcquestionnaire.html?token=%s";
+    private String abcurl = Constants.HOST + "xiaoyudi/pages/abcquestionnaire.html?token=%s";
 
-    private String bbcurl = Constants.HOST+"xiaoyudi/pages/abcPresentation.html?token=%s&status=core";
+    private String bbcurl = Constants.HOST + "xiaoyudi/pages/abcPresentation.html?token=%s&status=core";
 
-    private String abcurltwo = Constants.HOST+"xiaoyudi/pages/abcquestionnaire.html?token=%s&status=%s";
+    private String abcurltwo = Constants.HOST + "xiaoyudi/pages/abcquestionnaire.html?token=%s&status=%s";
 
-    private String pcdiurl = Constants.HOST+"xiaoyudi/pages/pcdiRequired.html?token=%s";
-    private String pcdiurltwo = Constants.HOST+"xiaoyudi/pages/pcdiRequired.html?token=%s&status=%s";
-    private String pcdiurlresult = Constants.HOST+"xiaoyudi/pages/allResult.html?token=%s&status=core";
-    private String pcdiurlrequire = Constants.HOST+"xiaoyudi/pages/requiredPresentation.html?token=%s&status=core";
+    private String pcdiurl = Constants.HOST + "xiaoyudi/pages/pcdiRequired.html?token=%s";
+    private String pcdiurltwo = Constants.HOST + "xiaoyudi/pages/pcdiRequired.html?token=%s&status=%s";
+    private String pcdiurlresult = Constants.HOST + "xiaoyudi/pages/allResult.html?token=%s&status=core";
+    private String pcdiurlrequire = Constants.HOST + "xiaoyudi/pages/requiredPresentation.html?token=%s&status=core";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,6 +62,27 @@ public class AssessActivity extends AppCompatActivity {
         if (null != supportActionBar) {
             supportActionBar.hide();  //隐藏掉标题栏
         }
+        getAbccccIsRemind(new PreferencesHelper(this).getToken());
+
+    }
+
+    private void setButtonColor(String abc,String pcid) {
+        if (!abc.equals("3") && !abc.equals("1")) {
+            btnAbc.setTextColor(getResources().getColor(R.color.textgrey));
+            btnAbc.setEnabled(false);
+
+        }else{
+            btnAbc.setTextColor(getResources().getColor(R.color.white));
+            btnAbc.setEnabled(true);
+
+        }
+        if (!pcid.equals("3") && !pcid.equals("1")) {
+            btnPcdi.setTextColor(getResources().getColor(R.color.textgrey));
+            btnPcdi.setEnabled(false);
+        }else{
+            btnPcdi.setTextColor(getResources().getColor(R.color.white));
+            btnPcdi.setEnabled(true);
+        }
     }
 
     /***abcIsRemind：abc问卷状态 1:没有做问卷  2:已经做过问卷  3:做问卷中途退出
@@ -68,7 +93,7 @@ public class AssessActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_back:
-                Intent intent = new Intent(AssessActivity.this,BalloonActivity.class);
+                Intent intent = new Intent(AssessActivity.this, BalloonActivity.class);
                 startActivity(intent);
                 finish();
                 break;
@@ -82,6 +107,34 @@ public class AssessActivity extends AppCompatActivity {
                     getPcdiIsRemind(new PreferencesHelper(this).getToken());
                 }
                 break;
+        }
+    }
+    public void getAbccccIsRemind(String token) {
+        HttpHelp.getInstance().create(RemoteApi.class).getAssessmentReview(token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseSubscriber<BaseBean<AssementReviewBean>>(this, null) {
+                    @Override
+                    public void onNext(BaseBean<AssementReviewBean> assementReviewBeanBaseBean) {
+                        super.onNext(assementReviewBeanBaseBean);
+                        UpDate(assementReviewBeanBaseBean);
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable) {
+                        super.onError(throwable);
+                    }
+                });
+    }
+
+    private void UpDate(BaseBean<AssementReviewBean> assementReviewBeanBaseBean) {
+        if (assementReviewBeanBaseBean.code == 200) {
+          String   abc = assementReviewBeanBaseBean.data.getAbcIsRemind();
+            String pcid = assementReviewBeanBaseBean.data.getPcdiIsRemind();
+            //根据返回状态值改变按钮颜色
+            setButtonColor(abc,pcid);
+        } else if (assementReviewBeanBaseBean.code == 205 || assementReviewBeanBaseBean.code == 209) {
+            GoToLoginActivityUtils.tokenFailureLoginOut(AssessActivity.this);
         }
     }
 
@@ -117,10 +170,12 @@ public class AssessActivity extends AppCompatActivity {
                                             break;
                                         case "2":
                                             bbcurl = String.format(bbcurl, new PreferencesHelper(AssessActivity.this).getToken());
+
                                             WebActivity.startActivity(AssessActivity.this, "", bbcurl);
                                             break;
                                         case "3":
                                             abcurltwo = String.format(abcurltwo, new PreferencesHelper(AssessActivity.this).getToken(), "1");
+
                                             WebActivity.startActivity(AssessActivity.this, "", abcurltwo);
                                             break;
                                      /*   case "4":
@@ -130,7 +185,7 @@ public class AssessActivity extends AppCompatActivity {
                                     }
                                 }
                             }
-                        }else if (assementReviewBeanBaseBean.code ==205 || assementReviewBeanBaseBean.code ==209) {
+                        } else if (assementReviewBeanBaseBean.code == 205 || assementReviewBeanBaseBean.code == 209) {
                             GoToLoginActivityUtils.tokenFailureLoginOut(AssessActivity.this);
                         }
                     }
@@ -182,7 +237,7 @@ public class AssessActivity extends AppCompatActivity {
                                     }
                                 }
                             }
-                        }else if (assementReviewBeanBaseBean.code ==205 || assementReviewBeanBaseBean.code ==209) {
+                        } else if (assementReviewBeanBaseBean.code == 205 || assementReviewBeanBaseBean.code == 209) {
                             GoToLoginActivityUtils.tokenFailureLoginOut(AssessActivity.this);
                         }
                     }

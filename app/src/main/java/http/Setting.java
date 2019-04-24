@@ -2,17 +2,6 @@ package http;
 
 import android.text.TextUtils;
 
-
-import com.qlzx.mylibrary.bean.BaseBean;
-
-import java.util.HashMap;
-
-import bean.PhoneIsRegisterBean;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
-import retrofit2.http.POST;
-import rx.Observable;
-
 /**
  * Created by Administrator on 2016/11/1.
  */
@@ -45,7 +34,6 @@ public class Setting {
     private static final String HOST_TEST = "api.t.drking.club";// 测试环境 180.76.163.33:9090
     //    private static final String HOST_ONLINE_R = "192.168.144.246:9090/admin"; // 预发布环境 114.115.213.85/   api.r.drking.club ， 114.115.213.85/child/app ，192.168.1.166:8080   app.zzbhqdd.com/child/app
     private static final String HOST_ONLINE_R = "47.95.244.242/XiaoyudiApplication"; // 预发布环境 114.115.213.85/   api.r.drking.club ， 114.115.213.85/child/app ，192.168.1.166:8080   app.zzbhqdd.com/child/app
-
     private static final String HOST_ONLINE = "dkapi.ixinzang.com";// 发布环境
 
     // image
@@ -77,10 +65,10 @@ public class Setting {
 
     // ==============================================================
     //测试地址
-   // public final static String URL_API_HOST_HTTP = "http://47.95.244.242/XiaoyudiApplication/";// 基地址
+    public final static String URL_API_HOST_HTTP = "http://47.95.244.242/XiaoyudiApplication/";// 基地址
 
-    //正式地址
-    public final static String URL_API_HOST_HTTP = "https://api.xiaoyudi.org/";// 基地址
+    //正式地址//15117966027
+    //public final static String URL_API_HOST_HTTP = "https://api.xiaoyudi.org/";// 基地址
 
 
     //    public final static String URL_API_HOST_HTTP = HTTP + HOST + SPLIT;// 基地址

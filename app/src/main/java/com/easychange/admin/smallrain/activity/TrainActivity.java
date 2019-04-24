@@ -12,18 +12,18 @@ import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.easychange.admin.smallrain.MainActivity;
 import com.easychange.admin.smallrain.R;
 import com.easychange.admin.smallrain.adapter.DayRvAdapter;
 import com.easychange.admin.smallrain.adapter.MonthRvAdapter;
 import com.easychange.admin.smallrain.adapter.WeekRvAdapter;
 import com.easychange.admin.smallrain.base.BaseActivity;
-import com.easychange.admin.smallrain.entity.LuckBackRoomListviewBean;
 import com.easychange.admin.smallrain.utils.GlideUtil;
 import com.easychange.admin.smallrain.utils.GoToLoginActivityUtils;
 import com.easychange.admin.smallrain.views.CircleImageView;
@@ -34,35 +34,23 @@ import com.qlzx.mylibrary.bean.BaseBean;
 import com.qlzx.mylibrary.http.HttpHelp;
 import com.qlzx.mylibrary.util.PreferencesHelper;
 import com.qlzx.mylibrary.util.ToastUtil;
-import com.scwang.smartrefresh.layout.SmartRefreshLayout;
-import com.scwang.smartrefresh.layout.api.RefreshLayout;
-import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
-import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
-import com.squareup.picasso.Picasso;
 import com.zhy.http.okhttp.OkHttpUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import bean.ChildMessageBean;
-import bean.CommenBean;
 import bean.DayData;
-import bean.GetFortifierBean;
-import bean.LookLatelyBean;
 import bean.MonthData;
-import bean.TranningFileMonthBean;
 import bean.UserBean;
 import bean.WeekData;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import dongci.DongciTestOneActivity;
-import dongci.DongciTrainOneActivity;
 import http.AsyncRequest;
 import http.BaseStringCallback_Host;
 import http.RemoteApi;
@@ -95,6 +83,22 @@ public class TrainActivity extends BaseActivity implements AsyncRequest {
     ImageView ivMonth;
     @BindView(R.id.ll_month)
     LinearLayout llMonth;
+    @BindView(R.id.btn_top_one)
+    Button btnTopOne;
+    @BindView(R.id.btn_top_two)
+    Button btnTopTwo;
+    @BindView(R.id.btn_top_three)
+    Button btnTopThree;
+    @BindView(R.id.btn_top_four)
+    Button btnTopFour;
+    @BindView(R.id.btn_bottom_one)
+    Button btnBottomOne;
+    @BindView(R.id.btn_bottom_two)
+    Button btnBottomTwo;
+    @BindView(R.id.btn_bottom_three)
+    Button btnBottomThree;
+    @BindView(R.id.btn_bottom_four)
+    Button btnBottomFour;
     //    @BindView(R.id.refreshLayout)
 //    SmartRefreshLayout refreshLayout;
     @BindView(R.id.tv_title)
@@ -103,6 +107,7 @@ public class TrainActivity extends BaseActivity implements AsyncRequest {
     private WeekRvAdapter weekRvAdapter;
     private MonthRvAdapter monthRvAdapter;
     private int position;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -115,10 +120,9 @@ public class TrainActivity extends BaseActivity implements AsyncRequest {
         dayInfo(position + "");
         weekInfo(position + "");
         monthInfo(position + "");
-
         Log.e("数据", "position" + position + "");
         initData();
-
+        setVisible(position);
         initPicName();
     }
 
@@ -136,7 +140,7 @@ public class TrainActivity extends BaseActivity implements AsyncRequest {
 
     }
 
-    @OnClick({R.id.ll_day, R.id.ll_week, R.id.ll_month, R.id.img_home_right})
+    @OnClick({R.id.ll_day, R.id.ll_week, R.id.ll_month, R.id.img_home_right,R.id.btn_bottom_one, R.id.btn_bottom_two, R.id.btn_bottom_three, R.id.btn_bottom_four})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_day:  //
@@ -151,9 +155,7 @@ public class TrainActivity extends BaseActivity implements AsyncRequest {
                 ivDay.setImageResource(R.drawable.day);//不会变形
                 ivWeek.setImageResource(R.drawable.week_select);//不会变形
                 ivMonth.setImageResource(R.drawable.month);//不会变形
-
                 canContentView.setAdapter(weekRvAdapter);
-
                 break;
             case R.id.ll_month:
                 ivDay.setImageResource(R.drawable.day);//不会变形
@@ -166,9 +168,80 @@ public class TrainActivity extends BaseActivity implements AsyncRequest {
             case R.id.img_home_right:
                 finish();
                 break;
+            case R.id.btn_bottom_one:
+                Intent intent = new Intent(TrainActivity.this, MainActivity.class);
+                intent.putExtra("aaaaaa",3333);
+                startActivity(intent);
+                break;
+            case R.id.btn_bottom_two:
+                MainActivity.startActivityWithParmeter(this,2);
+                Intent intent1
+                        = new Intent(TrainActivity.this, MainActivity.class);
+                intent1.putExtra("aaaaaa",3333);
+                startActivity(intent1);
+
+                break;
+            case R.id.btn_bottom_three:
+                MainActivity.startActivityWithParmeter(this,3);
+                Intent intent2 = new Intent(TrainActivity.this, MainActivity.class);
+                intent2.putExtra("aaaaaa",3333);
+                startActivity(intent2);
+
+                break;
+            case R.id.btn_bottom_four:
+                MainActivity.startActivityWithParmeter(this,4);
+                Intent intent3 = new Intent(TrainActivity.this, MainActivity.class);
+                intent3.putExtra("aaaaaa",3333);
+                startActivity(intent3);
+
+                break;
         }
     }
+    private void setVisible(int visible) {
+        if (visible == 1) {
+            btnBottomOne.setVisibility(View.INVISIBLE);
+            btnBottomTwo.setVisibility(View.VISIBLE);
+            btnBottomThree.setVisibility(View.VISIBLE);
+            btnBottomFour.setVisibility(View.VISIBLE);
 
+            btnTopOne.setVisibility(View.VISIBLE);
+            btnTopTwo.setVisibility(View.INVISIBLE);
+            btnTopThree.setVisibility(View.INVISIBLE);
+            btnTopFour.setVisibility(View.INVISIBLE);
+        } else if (visible == 2) {
+            btnBottomOne.setVisibility(View.VISIBLE);
+            btnBottomTwo.setVisibility(View.INVISIBLE);
+            btnBottomThree.setVisibility(View.VISIBLE);
+            btnBottomFour.setVisibility(View.VISIBLE);
+
+            btnTopOne.setVisibility(View.INVISIBLE);
+            btnTopTwo.setVisibility(View.VISIBLE);
+            btnTopThree.setVisibility(View.INVISIBLE);
+            btnTopFour.setVisibility(View.INVISIBLE);
+
+        } else if (visible == 3) {
+            btnBottomOne.setVisibility(View.VISIBLE);
+            btnBottomTwo.setVisibility(View.VISIBLE);
+            btnBottomThree.setVisibility(View.INVISIBLE);
+            btnBottomFour.setVisibility(View.VISIBLE);
+
+            btnTopOne.setVisibility(View.INVISIBLE);
+            btnTopTwo.setVisibility(View.INVISIBLE);
+            btnTopThree.setVisibility(View.VISIBLE);
+            btnTopFour.setVisibility(View.INVISIBLE);
+
+        } else if (visible == 4) {
+            btnBottomOne.setVisibility(View.VISIBLE);
+            btnBottomTwo.setVisibility(View.VISIBLE);
+            btnBottomThree.setVisibility(View.VISIBLE);
+            btnBottomFour.setVisibility(View.INVISIBLE);
+
+            btnTopOne.setVisibility(View.INVISIBLE);
+            btnTopTwo.setVisibility(View.INVISIBLE);
+            btnTopThree.setVisibility(View.INVISIBLE);
+            btnTopFour.setVisibility(View.VISIBLE);
+        }
+    }
     /**
      * 成功回调
      *
@@ -219,7 +292,7 @@ public class TrainActivity extends BaseActivity implements AsyncRequest {
                             } else if (position == 2) {
                                 titleText = "自学了" + format + "分钟 的动词短语结构通关进度" + progress + "（单项通关）";
                             } else if (position == 3) {
-                                titleText = "自学了" + format + "分钟 的句子成组短语结构通关进度" + progress + "（单项通关）";
+                                titleText = "自学了" + format + "分钟 的句子结构成组通关进度" + progress + "（单项通关）";
                             } else if (position == 4) {
                                 titleText = "自学了" + format + "分钟 的句子分解短语结构通关进度" + progress + "（单项通关）";
                             }

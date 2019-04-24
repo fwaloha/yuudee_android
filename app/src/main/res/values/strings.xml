@@ -1,16 +1,16 @@
 <resources>
-    <string name="app_name">新雨滴</string>
-    <string name="messagemonth"><Data><![CDATA[亲爱的新雨滴用户家长，%1$s小朋友使用我们的新雨滴
+    <string name="app_name" translatable="false">新雨滴</string>
+    <string name="messagemonth" translatable="false"><Data><![CDATA[亲爱的新雨滴用户家长，%1$s小朋友使用我们的新雨滴
             已经<font color="#EA4335">超过三个月</font>啦！考虑到小朋友的自然生长及在生活中学习的能力,
             您需要再次填写PCDI和ABC问卷，以便更好的了解小朋友的学习进展和语言能力变化,
             更好的帮助小朋友学习！]]></Data></string>
-    <string name="new_password"><![CDATA[Your password is<font color="#00ff1212">测量16个月以上说普通话的儿童早期语言发展的评估量表</font>PCDI量表是由父母填写]]></string>
+    <string name="new_password" translatable="false"><![CDATA[Your password is<font color="#00ff1212">测量16个月以上说普通话的儿童早期语言发展的评估量表</font>PCDI量表是由父母填写]]></string>
 
-    <string name="questionnaire_text">•PCDI量表是由父母填写，测量16个月以上说普通话的儿童早期语言发展的评估量表。目前已在世界各地得到广泛的应用。\n
+    <string name="questionnaire_text" translatable="false">•PCDI量表是由父母填写，测量16个月以上说普通话的儿童早期语言发展的评估量表。目前已在世界各地得到广泛的应用。\n
         •通过使用本量表，可以对语言发育迟缓的儿童进行定期监控，对干预效果（新雨滴训练内容）进行监控，以便更好的帮助儿童训练。\n
         •本量表必做部分将花费您10~15分钟时间。
     </string>
-    <string name="questionnaire_abc">
+    <string name="questionnaire_abc" translatable="false">
         •ABC量表又称自闭症行为量表，是一份由他人报告的形式，用于检测儿童是否患有自闭症的一个简单的方法，只能做为一个参考诊断依据，并不能单一地做为判定诊断结果的依据。\n
         •本量表有57个描述自闭症儿童的感觉、行为、情绪、语言等方面异常表现的项目，通过使用本量表，可以对自闭症儿童进行整体症状评估打分，对干预效果
     </string>
@@ -24,7 +24,7 @@
         <item>• 5. 不会玩玩具（如没完没了地转动、乱扔、揉等）</item>
     </array>
 
-    <string name="question_exit">
+    <string name="question_exit" translatable="false">
         \t\t\t\t您尚未填写完问卷评估，如果您现在退出，我们将会为您已经填写的部分保留1周时间，如果超过1周需要重新填写，因为孩子可能已经发生了很大的进步！您确定退出吗？
     </string>
 </resources>

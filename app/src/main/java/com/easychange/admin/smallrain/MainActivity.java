@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
@@ -32,6 +33,7 @@ import com.qlzx.mylibrary.bean.BaseBean;
 import com.qlzx.mylibrary.http.HttpHelp;
 import com.qlzx.mylibrary.util.EventBusUtil;
 import com.qlzx.mylibrary.util.PreferencesHelper;
+import com.qlzx.mylibrary.util.ToastUtil;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -107,25 +109,20 @@ public class MainActivity extends AppCompatActivity {
         fragments.add(new RecordsFragment());
         fragments.add(new AssessFragment());
         fragments.add(new MoreFragment());
-
         pagerAdapter = new FragPagerAdapter(getSupportFragmentManager(), fragments);
         actMainVp.setAdapter(pagerAdapter);
         actMainVp.setNoScroll(true);
-
         Intent intent = getIntent();
         if (intent != null) {
             int type = intent.getIntExtra("mainactivitytype", 1);
             setVisible(type);
             actMainVp.setCurrentItem(type - 1);
         }
-
         if (!TextUtils.isEmpty(new PreferencesHelper(this).getToken())) {
             getAssessmentReview(new PreferencesHelper(this).getToken());
         }
-
         EventBusUtil.register(this);
     }
-
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void GotoQuestionnaireBean(GotoQuestionnaireBean event) {
         setVisible(3);

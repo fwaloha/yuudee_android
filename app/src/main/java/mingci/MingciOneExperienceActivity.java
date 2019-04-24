@@ -32,6 +32,7 @@ import android.widget.TextView;
 
 import com.easychange.admin.smallrain.MainActivity;
 import com.easychange.admin.smallrain.R;
+import com.easychange.admin.smallrain.activity.BalloonExperienceActivity;
 import com.easychange.admin.smallrain.activity.LetsTestActivity;
 import com.easychange.admin.smallrain.base.BaseActivity;
 import com.easychange.admin.smallrain.entity.BreakNetBean;
@@ -45,6 +46,9 @@ import com.easychange.admin.smallrain.views.IndicatorView;
 import com.easychange.admin.smallrain.views.WaveCircleView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.qlzx.mylibrary.base.BaseSubscriber;
+import com.qlzx.mylibrary.bean.BaseBean;
+import com.qlzx.mylibrary.http.HttpHelp;
 import com.qlzx.mylibrary.util.EventBusUtil;
 import com.qlzx.mylibrary.util.PreferencesHelper;
 import com.qlzx.mylibrary.util.ToastUtil;
@@ -64,6 +68,8 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import bean.AssementReviewBean;
+import bean.ChildMessageBean;
 import bean.DelayTimeBean;
 import bean.MingciBean;
 import butterknife.BindView;
@@ -71,12 +77,15 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import http.AsyncRequest;
 import http.BaseStringCallback_Host;
+import http.RemoteApi;
 import http.Setting;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by chenlipeng on 2018/11/2 0002
@@ -188,6 +197,7 @@ public class MingciOneExperienceActivity extends BaseActivity implements AsyncRe
     private View rightChildTextTwo;
     private TextView tv_content1;
     private TextView tv_content2;
+    private String isRemind;
 
     /**
      * 展示一开始的动画
@@ -392,7 +402,7 @@ public class MingciOneExperienceActivity extends BaseActivity implements AsyncRe
         length = getIntent().getIntExtra("length", -1);
         scene = getIntent().getStringExtra("scene");
         initListener();
-
+        getChildMessageBean(new PreferencesHelper(MingciOneExperienceActivity.this).getToken());
         if (length != -1 && !TextUtils.isEmpty(scene)) {
 
             position = length;
@@ -472,7 +482,30 @@ public class MingciOneExperienceActivity extends BaseActivity implements AsyncRe
             }
         }
     };
+    /**
+     * 获取儿童信息
+     *
+     * @param token
+     * @return
+     */
+    public void getChildMessageBean(String token) {
+        HttpHelp.getInstance().create(RemoteApi.class).getAssessmentReview(token)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new BaseSubscriber<BaseBean<AssementReviewBean>>(this, null) {
+                    @Override
+                    public void onNext(BaseBean<AssementReviewBean> assementReviewBeanBaseBean) {
+                        super.onNext(assementReviewBeanBaseBean);
+                        isRemind=assementReviewBeanBaseBean.data.getIsRemind();
+                    }
 
+                    @Override
+                    public void onError(Throwable throwable) {
+                        super.onError(throwable);
+                    }
+                });
+
+    }
     private void setScreenLock() {
         screenListener = new ScreenListener(this);
         screenListener.begin(new ScreenListener.ScreenStateListener() {
@@ -742,6 +775,7 @@ public class MingciOneExperienceActivity extends BaseActivity implements AsyncRe
         (MingciOneExperienceActivity.this).runOnUiThread(new Runnable() {//在UI线程处理逻辑，当操作控件的时候
             @Override
             public void run() {
+
                 ToastUtil.showToast(MingciOneExperienceActivity.this, errorMessage);
             }
         });
@@ -1150,16 +1184,22 @@ public class MingciOneExperienceActivity extends BaseActivity implements AsyncRe
             case R.id.iv_home:
                 isQuitActivity = true;
                 isFinish = true;
-
                 OkHttpUtils.getInstance().cancelTag(MingciOneExperienceActivity.this);
 
                 ForegroundCallbacks.get().removeListener(foregroundCallbackslistener);
                 foregroundCallbackslistener = null;
                 screenListener.unregisterListener();
                 screenListener = null;
-                Intent intent = new Intent(MingciOneExperienceActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
+                if ("1".equals(isRemind)) {
+                    Intent intent = new Intent(MingciOneExperienceActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }else{
+                /*Intent intent = new Intent(MingciOneExperienceActivity.this, MainActivity.class);
+                startActivity(intent);*/
+                    finish();
+                }
                 break;
             case R.id.iv_paint:
             case R.id.fl_point:
@@ -1363,16 +1403,22 @@ public class MingciOneExperienceActivity extends BaseActivity implements AsyncRe
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN) {
             isQuitActivity = true;
             isFinish = true;
-
             OkHttpUtils.getInstance().cancelTag(MingciOneExperienceActivity.this);
-
             ForegroundCallbacks.get().removeListener(foregroundCallbackslistener);
             foregroundCallbackslistener = null;
             screenListener.unregisterListener();
             screenListener = null;
-            Intent intent = new Intent(MingciOneExperienceActivity.this, MainActivity.class);
-            startActivity(intent);
-            finish();
+            if ("1".equals(isRemind)) {
+                Intent intent = new Intent(MingciOneExperienceActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+
+            }else{
+                /*Intent intent = new Intent(MingciOneExperienceActivity.this, MainActivity.class);
+                startActivity(intent);*/
+                finish();
+            }
+
             return true;
         }
         return super.onKeyDown(keyCode, event);

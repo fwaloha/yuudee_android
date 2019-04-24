@@ -4,22 +4,17 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 
-import com.easychange.admin.smallrain.activity.PinTuAllFlyActivity;
 import com.easychange.admin.smallrain.utils.ForegroundCallbacks;
 import com.franmontiel.persistentcookiejar.ClearableCookieJar;
 import com.franmontiel.persistentcookiejar.PersistentCookieJar;
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
-
 import com.qlzx.mylibrary.util.PreferencesHelper;
-import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.umeng.analytics.MobclickAgent;
 import com.umeng.commonsdk.UMConfigure;
 import com.umeng.socialize.PlatformConfig;
-import com.umeng.socialize.UMShareAPI;
 import com.zhy.http.okhttp.OkHttpUtils;
 import com.zhy.http.okhttp.https.HttpsUtils;
 import com.zhy.http.okhttp.log.LoggerInterceptor;
@@ -28,12 +23,9 @@ import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Level;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLSession;
@@ -43,14 +35,10 @@ import bean.DongciGuoGuan;
 import bean.JuziChengzuGuan;
 import bean.JuzifenjieGuoGuan;
 import bean.MingciGuoGuan;
-import cn.jpush.android.api.JPushInterface;
-import dongci.DongciTestOneActivity;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-
-import static com.umeng.socialize.utils.ContextUtil.getContext;
 
 /**
  * Created by Administrator on 2017/8/24.
@@ -74,12 +62,12 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (LeakCanary.isInAnalyzerProcess(this)) {
+        /*if (LeakCanary.isInAnalyzerProcess(this)) {
             // This process is dedicated to LeakCanary for heap analysis.
             // You should not init your app in this process.
             return;
         }
-        LeakCanary.install(this);
+        LeakCanary.install(this);*/
         // Normal app init code...
         if (!getApplicationInfo().packageName.equals(getCurProcessName(this))) return;
         //建议在测试阶段建议设置成true，发布时设置为fals
@@ -99,8 +87,10 @@ public class MyApplication extends Application {
         juziChengzuGuan = new JuziChengzuGuan();
         juzifenjieGuoGuan = new JuzifenjieGuoGuan();
 
-        UMConfigure.init(this, "5bfaaccaf1f556067e000315"
-                , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0
+        /*UMConfigure.init(this, "5bee60d5f1f55659f60002a7"
+                , "umeng", UMConfigure.DEVICE_TYPE_PHONE, "");//58edcfeb310c93091c000be2 5965ee00734be40b580001a0*/
+        UMConfigure.init(this, UMConfigure.DEVICE_TYPE_PHONE, "");
+        MobclickAgent.setScenarioType(this, MobclickAgent.EScenarioType.E_UM_NORMAL);
 
         PlatformConfig.setWeixin("wx29c790d4f2786062", "6f61834f3f5b4c90c357d0655f80b8c1");
         PlatformConfig.setQQZone("1106732218", "3Umf2GOQvvZjKVLY");

@@ -34,11 +34,17 @@
     </declare-styleable>
     <!--画图板-->
     <declare-styleable name="drawimg">
+<!--
         //画笔颜色
+-->
         <attr name="paintcolor"/>
+<!--
         //画笔宽度
+-->
         <attr name="paintwidth"/>
-        //画板图片--有颜色的
+<!--
+        画板图片&#45;&#45;有颜色的
+-->
         <attr name="canvasimg"/>
         <attr name="paintimg"/>
     </declare-styleable>

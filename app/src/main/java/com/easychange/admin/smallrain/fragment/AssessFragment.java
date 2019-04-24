@@ -33,7 +33,9 @@ import com.qlzx.mylibrary.http.HttpHelp;
 import com.qlzx.mylibrary.util.PreferencesHelper;
 import com.qlzx.mylibrary.util.ToastUtil;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import bean.AssementReviewBean;
@@ -65,6 +67,7 @@ public class AssessFragment extends BaseFragment {
     private String pcdiurltwo = Constants.HOST+"xiaoyudi/pages/pcdiRequired.html?token=%s&status=%s";
     private String pcdiurlresult = Constants.HOST+"xiaoyudi/pages/allResult.html?token=%s&status=core";
     private String pcdiurlrequire = Constants.HOST+"xiaoyudi/pages/requiredPresentation.html?token=%s&status=core";
+    private String precisionStandardTime;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -78,6 +81,11 @@ public class AssessFragment extends BaseFragment {
 
 
     }
+    public static String getPrecisionStandardTime(){
+        long millis = System.currentTimeMillis();
+        return String.valueOf(millis);
+
+}
 
     /***abcIsRemind：abc问卷状态 1:没有做问卷  2:已经做过问卷  3:做问卷中途退出
      * pcdiIsRemind ： pcdi问卷状态 1:没有做问卷 2:只做了必做问卷 3:做问卷中途退出 4:做完全部问卷
@@ -122,6 +130,8 @@ public class AssessFragment extends BaseFragment {
                         super.onNext(assementReviewBeanBaseBean);
                         AssementReviewBean assementReviewBean = null;
                         if (assementReviewBeanBaseBean.code == 200) {
+                            precisionStandardTime = getPrecisionStandardTime();
+
                             assementReviewBean = assementReviewBeanBaseBean.data;
                             if (assementReviewBean != null) {
                                 if ("1".equals(assementReviewBean.getIsRemind())) {
@@ -130,19 +140,20 @@ public class AssessFragment extends BaseFragment {
                                     ToastUtil.showToast(getActivity(),"完善儿童信息后，继续做问卷");
                                 } else if ("2".equals(assementReviewBean.getIsRemind())) {
                                     abcIsRemind = assementReviewBean.getAbcIsRemind();
-                                    Log.e("AssessFragment", abcIsRemind);
+                                    pcdiIsRemind = assementReviewBean.getPcdiIsRemind();
+
                                     switch (abcIsRemind) {
                                         case "1":
                                             abcurl = String.format(abcurl, new PreferencesHelper(getActivity()).getToken());
-                                            WebActivity.startActivity(getActivity(), "", abcurl);
+                                            WebActivity.startActivity(getActivity(), "", abcurl+"&v="+precisionStandardTime);
                                             break;
                                         case "2":
                                             bbcurl = String.format(bbcurl, new PreferencesHelper(getActivity()).getToken());
-                                            WebActivity.startActivity(getActivity(), "", bbcurl);
+                                            WebActivity.startActivity(getActivity(), "", bbcurl+"&v="+precisionStandardTime);
                                             break;
                                         case "3":
                                             abcurltwo = String.format(abcurltwo, new PreferencesHelper(getActivity()).getToken(), "1");
-                                            WebActivity.startActivity(getActivity(), "", abcurltwo);
+                                            WebActivity.startActivity(getActivity(), "", abcurltwo+"&v="+precisionStandardTime);
                                             break;
                                      /*   case "4":
                                             abcurltwo = String.format(abcurltwo, new PreferencesHelper(getActivity()).getToken(), "core");
@@ -173,6 +184,8 @@ public class AssessFragment extends BaseFragment {
                         super.onNext(assementReviewBeanBaseBean);
                         AssementReviewBean assementReviewBean = null;
                         if (assementReviewBeanBaseBean.code == 200) {
+                            precisionStandardTime = getPrecisionStandardTime();
+
                             assementReviewBean = assementReviewBeanBaseBean.data;
                             if (assementReviewBean != null) {
                                 if ("1".equals(assementReviewBean.getIsRemind())) {
@@ -181,25 +194,28 @@ public class AssessFragment extends BaseFragment {
                                     ToastUtil.showToast(getActivity(),"完善儿童信息后，继续做问卷");
                                 } else if ("2".equals(assementReviewBean.getIsRemind())) {
                                     pcdiIsRemind = assementReviewBean.getPcdiIsRemind();
-                                    Log.e("AssessFragment", pcdiIsRemind);
+                                    pcdiurl = String.format(pcdiurl, new PreferencesHelper(getActivity()).getToken());
                                     switch (pcdiIsRemind) {
                                         case "1":
-                                            pcdiurl = String.format(pcdiurl, new PreferencesHelper(getActivity()).getToken());
-                                            WebActivity.startActivity(getActivity(), "", pcdiurl);
+
+                                            WebActivity.startActivity(getActivity(), "", pcdiurl+"&v="+precisionStandardTime);
                                             break;
                                         case "2":
                                             //TODO 可能要加 core   ,到时候基础接口上要加下。
 //                                            pcdiurlrequire = String.format(pcdiurlrequire,new PreferencesHelper(getActivity()).getToken(),"core");
                                             pcdiurlrequire = String.format(pcdiurlrequire, new PreferencesHelper(getActivity()).getToken());
-                                            WebActivity.startActivity(getActivity(), "", pcdiurlrequire);
+
+                                            WebActivity.startActivity(getActivity(), "", pcdiurlrequire+"&v="+precisionStandardTime);
                                             break;
                                         case "3":
                                             pcdiurltwo = String.format(pcdiurltwo, new PreferencesHelper(getActivity()).getToken(), "1");
-                                            WebActivity.startActivity(getActivity(), "", pcdiurltwo);
+
+                                            WebActivity.startActivity(getActivity(), "", pcdiurltwo+"&v="+precisionStandardTime);
                                             break;
                                         case "4":
                                             pcdiurlresult = String.format(pcdiurlresult, new PreferencesHelper(getActivity()).getToken());
-                                            WebActivity.startActivity(getActivity(), "", pcdiurlresult);
+
+                                            WebActivity.startActivity(getActivity(), "", pcdiurlresult+"&v="+precisionStandardTime);
                                             break;
                                     }
                                 }

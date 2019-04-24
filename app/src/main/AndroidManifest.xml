@@ -12,14 +12,15 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.FLASHLIGHT" />
     <uses-permission android:name="com.easychange.admin.smallrain.permission.JPUSH_MESSAGE" />
+    <!-- 添加如下权限，以便使用更多的第三方SDK和更精准的统计数据 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -164,6 +165,7 @@
         <meta-data
             android:name="JPUSH_APPKEY"
             android:value="ee9177f68df4a5eac387b555" />
+
         <!--
           <provider
               android:name="android.support.v4.content.FileProvider"
@@ -178,22 +180,22 @@
         <activity
             android:name=".activity.StartActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"></activity>
 
-        </activity>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5bee60d5f1f55659f60002a7" />
+
         <activity
             android:name=".activity.SplashActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-
         <activity
             android:name=".activity.HomeActivity"
             android:screenOrientation="portrait" />
@@ -370,6 +372,9 @@
             android:name="com.tencent.connect.common.AssistActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+<!--
+        <activity android:name=".activity.TextAgenWebAct"></activity>
+-->
     </application>
 
 </manifest>

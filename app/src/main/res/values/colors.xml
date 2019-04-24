@@ -38,7 +38,7 @@
 
     <color name="roundColor">#B29576</color>
     <color name="lineColor">#EFEFEF</color>
-
+    <color name="a">#00ceff</color>
     <color name="roundColor_time">#12CCFF</color>
     <color name="dark_gray_text_color">#3f3f3f</color>
     <color name="background">#f7f7f7</color>

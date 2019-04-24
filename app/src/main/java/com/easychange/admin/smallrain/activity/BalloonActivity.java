@@ -42,6 +42,7 @@ import com.easychange.admin.smallrain.receiver.NetReceiver;
 import com.easychange.admin.smallrain.utils.GlideUtil;
 import com.easychange.admin.smallrain.utils.GoToLoginActivityUtils;
 import com.easychange.admin.smallrain.utils.MyUtils;
+import com.easychange.admin.smallrain.utils.UMUtils;
 import com.easychange.admin.smallrain.views.CircleImageView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -178,6 +179,9 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
         ButterKnife.bind(this);
         EventBusUtil.register(this);
         Log.e("myactivity", "BalloonActivity");
+        UMUtils.getDeviceInfo(this);
+        Log.i("liubiao", "onCreate: "+new PreferencesHelper(this).getToken());
+
         scaleAnimation_big = (ScaleAnimation) AnimationUtils.loadAnimation(BalloonActivity.this, R.anim.scale_big);
         scaleAnimation_small = (ScaleAnimation) AnimationUtils.loadAnimation(BalloonActivity.this, R.anim.scale_small);
         initPicName();
@@ -493,13 +497,10 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                             if (currentNounLength != -1 && !TextUtils.isEmpty(currentNounScene)) {
 //                                scene	是	string	学习场景 1训练 2测试 3意义
                                 if (currentNounScene.equals("1")) {
-
                                     if (isCanlIntoNextActivity()) return;
-
                                     Intent intent = new Intent(BalloonActivity.this, MingciOneActivity.class);
                                     intent.putExtra("position", currentNounLength);
                                     intent.putExtra("model", model);
-
                                     if (TextUtils.isEmpty(currentNounGroupId)) {
                                         intent.putExtra("groupId", "");
                                     } else {
@@ -513,7 +514,6 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
 
                                 } else {
                                     if (isCanlIntoNextActivity()) return;
-
                                     Intent intent = new Intent(BalloonActivity.this, MingciTestOneActivity.class);
                                     intent.putExtra("position", currentNounLength);
                                     intent.putExtra("model", model);
@@ -528,7 +528,6 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                     } else {
                                         ToastUtil.showToast(BalloonActivity.this, "当前网络已断开");
                                     }
-
                                 }
                             }
                         }
@@ -884,7 +883,7 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                     }
                                 });
                                 if (isFinished) {//已完成
-
+                                    Log.i("liubiao", "已完善儿童信息"+isFinished);
                                     iv_mingci.setOnTouchListener(null);
                                     iv_mingci.setOnTouchListener(new View.OnTouchListener() {//主要是防止点击图片透明的地方，不执行点击事件
                                         @Override
@@ -935,7 +934,7 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                     });
 
                                 } else {
-//
+                                    Log.i("liubiao", "没有完善"+isFinished);
                                     iv_mingci.setOnTouchListener(null);
                                     iv_mingci.setOnTouchListener(new View.OnTouchListener() {//主要是防止点击图片透明的地方，不执行点击事件
                                         @Override
@@ -1265,7 +1264,7 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                                     //名词
                                     String currentModule = model.getData().getModule();
                                     String currentNnoun = model.getList().getNoun();
-
+                                    Log.i("liubiao", "不知道"+currentModule);
                                     if (currentModule.equals("1")) {
                                         intoCommonMingci();
                                     }
@@ -2593,7 +2592,6 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
                         } else {
                             if (isCanlIntoNextActivity())
                                 return true;
-
                             Intent intent11 = new Intent(BalloonActivity.this, DongciTrainOneActivity.class);
                             if (isNetConnect) {
                                 startActivity(intent11);
@@ -2830,15 +2828,17 @@ public class BalloonActivity extends BaseActivity implements AsyncRequest {
 
 //                                如果需要弹框提醒判断提醒类型( 1 :正常定时提醒2:通关提醒)
                                 remindType = assementReviewBean.getRemindType();
-
+                                Log.i("liubiao", "完善状态值"+assementReviewBean.getIsRemind());
                                 if ("1".equals(assementReviewBean.getIsRemind())) {
                                     String message = getResources().getString(R.string.new_password);
                                     Spanned ss = Html.fromHtml(message);
                                     // 未完善儿童信息，弹框让完善儿童信息
                                     showIsRemindDialog("完善训练儿童信息", messageRemind, "去完善");
-
                                     isFinished = false;
                                 } else if ("2".equals(assementReviewBean.getIsRemind())) {
+                                    Log.i("liubiao", "进来完善赋值里面"+assementReviewBean.getIsRemind());
+
+                                    isFinished = true;
 
                                     if ("0".equals(assementReviewBean.getIsRecord())) {
                                         // 没有填写过问卷，弹框完善问卷

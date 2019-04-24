@@ -117,7 +117,9 @@
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
 
         <!--    <com.scwang.smartrefresh.layout.SmartRefreshLayout
                 android:id="@+id/refreshLayout"
@@ -127,7 +129,7 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/can_content_view"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="30dp"
                     android:overScrollMode="never" />
          <!--   </com.scwang.smartrefresh.layout.SmartRefreshLayout>-->
@@ -168,6 +170,131 @@
                     android:text="没有相关内容" />
             </RelativeLayout>
         </FrameLayout>
+        <RelativeLayout
+
+            android:background="@drawable/family_bg33x"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dip"
+                android:orientation="horizontal"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip">
+
+                <Button
+                    android:textStyle="bold"
+                    android:id="@+id/btn_top_one"
+                    android:layout_width="0dp"
+                    android:layout_height="40dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/button3x"
+                    android:paddingBottom="5dp"
+                    android:text="产品介绍"
+                    android:textColor="@color/white"
+                    android:textSize="14dip"
+                    android:visibility="visible" />
+
+                <Button
+                    android:textStyle="bold"
+                    android:id="@+id/btn_top_two"
+                    android:layout_width="0dp"
+                    android:layout_height="40dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/button3x"
+                    android:paddingBottom="5dp"
+                    android:text="训练档案"
+                    android:textColor="@color/white"
+                    android:textSize="14dip"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:textStyle="bold"
+                    android:id="@+id/btn_top_three"
+                    android:layout_width="0dp"
+                    android:layout_height="40dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/button3x"
+                    android:paddingBottom="5dp"
+                    android:text="评估评测"
+                    android:textColor="@color/white"
+                    android:textSize="14dip"
+                    android:visibility="invisible" />
+
+                <Button
+                    android:textStyle="bold"
+                    android:id="@+id/btn_top_four"
+                    android:layout_width="0dp"
+                    android:layout_height="40dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/button3x"
+                    android:paddingBottom="5dp"
+                    android:text="更多"
+                    android:textColor="@color/white"
+                    android:textSize="14dip"
+                    android:visibility="invisible" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                android:paddingLeft="15dip"
+                android:paddingRight="15dip">
+
+                <Button
+                    android:visibility="invisible"
+                    android:textStyle="bold"
+                    android:id="@+id/btn_bottom_one"
+                    android:layout_width="0dp"
+                    android:layout_height="40dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/button3x"
+                    android:paddingBottom="5dp"
+                    android:text="产品介绍"
+                    android:textColor="@color/home_text"
+                    android:textSize="14dip" />
+
+                <Button
+                    android:textStyle="bold"
+                    android:id="@+id/btn_bottom_two"
+                    android:layout_width="0dp"
+                    android:layout_height="40dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/button3x"
+                    android:paddingBottom="5dp"
+                    android:text="训练档案"
+                    android:textColor="@color/home_text"
+                    android:textSize="14dip" />
+
+                <Button
+                    android:textStyle="bold"
+                    android:id="@+id/btn_bottom_three"
+                    android:layout_width="0dp"
+                    android:layout_height="40dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/button3x"
+                    android:paddingBottom="5dp"
+                    android:text="评估评测"
+                    android:textColor="@color/home_text"
+                    android:textSize="14dip" />
+
+                <Button
+                    android:textStyle="bold"
+                    android:id="@+id/btn_bottom_four"
+                    android:layout_width="0dp"
+                    android:layout_height="40dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/button3x"
+                    android:paddingBottom="5dp"
+                    android:text="更多"
+                    android:textColor="@color/home_text"
+                    android:textSize="14dip" />
+            </LinearLayout>
+        </RelativeLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -135,6 +135,8 @@ public class SplashActivity extends AppCompatActivity {
         ForegroundCallbacks.get().addListener(forListener);
         ButterKnife.bind(this);
         ActionBar supportActionBar = getSupportActionBar();
+        getIvfromServe("1");
+
         if (null != supportActionBar) {
             supportActionBar.hide();  //隐藏掉标题栏
         }
@@ -145,7 +147,6 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         LogUtil.d("SplashActivity token--" + token);
-        getIvfromServe("1");
 
 
         JPushInterface.init(this);
@@ -225,6 +226,7 @@ public class SplashActivity extends AppCompatActivity {
                         if (imageBeanBaseBean.code == 200) {
                             SplashPicBean splashPicBean = imageBeanBaseBean.data;
                             if (splashPicBean != null && !TextUtils.isEmpty(splashPicBean.getImage())) {
+                                Log.i("liubiao", "onNext: "+splashPicBean.getImage());
                                 GlideUtil.display(SplashActivity.this, splashPicBean.getImage(), ivSplansh);
                             } else {
                                 noImg = true;

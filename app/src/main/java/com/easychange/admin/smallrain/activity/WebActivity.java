@@ -69,7 +69,6 @@ public class WebActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         url = intent.getStringExtra("url");
-
         //设置webview的屏幕适配
         mWebView.getSettings().setDomStorageEnabled(true);//打开DOM存储API
         WebSettings settings = mWebView.getSettings();
@@ -77,6 +76,8 @@ public class WebActivity extends AppCompatActivity {
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
         settings.setJavaScriptEnabled(true);
+        settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+        settings.setAppCacheEnabled(true);
         settings.getJavaScriptCanOpenWindowsAutomatically();
         mWebView.addJavascriptInterface(this, "android");
 
@@ -99,7 +100,6 @@ public class WebActivity extends AppCompatActivity {
                 mWebView.setLayerType(View.LAYER_TYPE_HARDWARE,null);
             }
         });
-        Log.e("webactivity",url+"-------------------");
         mWebView.loadUrl(url);
     }
 
@@ -109,7 +109,11 @@ public class WebActivity extends AppCompatActivity {
         intent.putExtra("url",url);
         context.startActivity(intent);
     }
+    public static String getPrecisionStandardTime(){
+        long millis = System.currentTimeMillis();
+        return String.valueOf(millis);
 
+    }
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if ((keyCode == KEYCODE_BACK) && mWebView.canGoBack()) {
@@ -118,6 +122,8 @@ public class WebActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
 
     // 定义JS需要调用的方法
     // 被JS调用的方法必须加入@JavascriptInterface注解

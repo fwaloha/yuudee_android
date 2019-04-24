@@ -33,6 +33,7 @@ import com.qlzx.mylibrary.bean.BaseBean;
 import com.qlzx.mylibrary.http.HttpHelp;
 import com.qlzx.mylibrary.util.EventBusUtil;
 import com.qlzx.mylibrary.util.PreferencesHelper;
+import com.qlzx.mylibrary.util.SPUtils;
 import com.qlzx.mylibrary.util.ToastUtil;
 import com.xw.repo.fillblankview.FillBlankView;
 import com.zhy.http.okhttp.OkHttpUtils;
@@ -100,6 +101,9 @@ public class EditDataActivity extends BaseActivity implements TextWatcher, Async
     private ImageView ivLocation;
     private boolean isNewPhoneVerify = false;
     private TextView tvGetStatesCode;
+    private String phonePrefix;
+    private String phnm;
+    private String abcphone;
     //    更换手机号页面逻辑：
 //            1.请输入当前账号绑定手机号：下方方框中展示原注册手机号，但隐藏中间四位，用户可点击输入此手机号。具体输入手机号逻辑同之前注册输入手机号逻辑。
 //            2.输入手机号符合要求，验证按钮点亮可点，点击验证按钮，判断此手机号是否与原注册绑定手机号一致，一致直接发送验证码到此手机号；不一致，提示文案“已绑定手机号输入错误，请重新输入”。用户可重新输入手机号，逻辑同上。
@@ -112,9 +116,9 @@ public class EditDataActivity extends BaseActivity implements TextWatcher, Async
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_data);
         ButterKnife.bind(this);
-
         helper = new PreferencesHelper(EditDataActivity.this);
-
+        phnm = (String)SPUtils.get(EditDataActivity.this, "phonenumber", "");
+        Log.i("liubiao", "onCreate: "+phnm+abcphone);
         type = getIntent().getIntExtra("TYPE", 0);
         initView(type);
         initEvent();
@@ -269,7 +273,7 @@ public class EditDataActivity extends BaseActivity implements TextWatcher, Async
                 tv_describe = (TextView) findViewById(R.id.tv_describe);
 
                 String phone = currentLoginPhoneNum.substring(0, 3) + "****" + currentLoginPhoneNum.substring(7, currentLoginPhoneNum.length());
-                tv_describe.setText("短信验证码已发送至+86 " + phone);
+                tv_describe.setText("短信验证码已发送至+(86) " + phone);
 
                 tv_get_code = (TextView) findViewById(R.id.tv_get_code);
                 SendSmsTimerUtils.sendSms(tv_get_code, R.color.fffColor, R.color.fffColor, 2);
@@ -286,9 +290,9 @@ public class EditDataActivity extends BaseActivity implements TextWatcher, Async
                 tvSure.setOnClickListener(onClickListener);
                 break;
             case 4://  更换新的没有注册的手机号码
-
                 view = View.inflate(this, R.layout.layout_edit_phone_three, null);
                 parentLayout.addView(view);
+                String smsCode = new PreferencesHelper(EditDataActivity.this).getSmsCode();
                 tvLocation = ((TextView) findViewById(R.id.tv_location));
                 tvLocation.setText("+"+new PreferencesHelper(EditDataActivity.this).getSmsCode());
                 ivLocation = (ImageView) findViewById(R.id.iv_location);
@@ -341,13 +345,20 @@ public class EditDataActivity extends BaseActivity implements TextWatcher, Async
 
                         if (!TextUtils.isEmpty(trim)) {
                             String newPhoneNum = trim.replace(" ", "");
-                            if (MyUtils.CheckPhoneNum(EditDataActivity.this, newPhoneNum)) {
-                                phoneIsRegisterOnNewPhoneNumberImport(newPhoneNum, newDistriceId);
+
+                            if (phnm.equals("86") || abcphone.equals("86")) {
+                                if (MyUtils.CheckPhoneNum(EditDataActivity.this, newPhoneNum)) {
+                                    phoneIsRegisterOnNewPhoneNumberImport(newPhoneNum, newDistriceId);
+                                    tvSure.setTextColor(Color.parseColor("#ffffff"));
+                                    tvSure.setClickable(true);
+                                } else {
+                                    tvSure.setTextColor(Color.parseColor("#b5ada5"));
+                                    tvSure.setClickable(false);
+                                }
+                            }else{
                                 tvSure.setTextColor(Color.parseColor("#ffffff"));
-                                tvSure.setClickable(true);
-                            } else {
-                                tvSure.setTextColor(Color.parseColor("#b5ada5"));
-                                tvSure.setClickable(false);
+                                phoneIsRegisterOnNewPhoneNumberImport(newPhoneNum, newDistriceId);
+
                             }
                         }
 
@@ -538,7 +549,8 @@ public class EditDataActivity extends BaseActivity implements TextWatcher, Async
                                 showFamilyDialog(phone);
                             }
                         } else {
-                            ToastUtil.showToast(EditDataActivity.this, baseBean.msg + "");
+
+                            ToastUtil.showToast(EditDataActivity.this, baseBean.msg );
                         }
                     }
 
@@ -687,7 +699,6 @@ public class EditDataActivity extends BaseActivity implements TextWatcher, Async
                     Intent intent1 = new Intent(EditDataActivity.this, EditDataActivity.class);
                     intent1.putExtra("TYPE", type + 1);
                     intent1.putExtra("newPhone", (String) msg.obj);
-
                     startActivity(intent1);
                     finish();
                     dialog.dismiss();
@@ -750,7 +761,10 @@ public class EditDataActivity extends BaseActivity implements TextWatcher, Async
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 111 && resultCode == Activity.RESULT_OK) {
-            String phonePrefix = data.getStringExtra("phonePrefix");
+            phonePrefix = data.getStringExtra("phonePrefix");
+            SPUtils.put(EditDataActivity.this,"phonenumber",phonePrefix);
+            abcphone = (String)SPUtils.get(EditDataActivity.this, "phonenumber", phonePrefix);
+
             new PreferencesHelper(EditDataActivity.this).saveSmsCode(phonePrefix);
             String id = data.getStringExtra("cityid");
             newDistriceId = id;

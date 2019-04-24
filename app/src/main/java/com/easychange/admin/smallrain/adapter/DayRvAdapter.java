@@ -92,8 +92,7 @@ public class DayRvAdapter extends RecyclerViewAdapter<DayData.DataBean.ResultLis
             }
         }
         float studyTime = model.getStudyTime();
-        String split = model.getStr().substring(0, 10);
-        split = split.replaceFirst("-","年");
+        String split = model.getStr().substring(5, 10);
         split = split.replaceFirst("-","月")+"日";
 //        studyTime
         viewHolderHelper.setText(R.id.tv_title, split + "(学习时间"+ TimeUtil.formatTimeS(model.getStudyTime())+(model.getStudyTime()>=3600?"小时":model.getStudyTime()>=60?"分钟":"秒")+")");
@@ -163,7 +162,6 @@ public class DayRvAdapter extends RecyclerViewAdapter<DayData.DataBean.ResultLis
 
     private void initChart1(LineChart lineChart1, DayData.DataBean.ResultListBean model, ViewHolderHelper viewHolderHelper,View view) {
         LineChartManager lineChartManager1 = new LineChartManager(lineChart1);
-
         List<Float> yValues;
         //设置y轴的数据()
         yValues = new ArrayList<>();
@@ -172,6 +170,7 @@ public class DayRvAdapter extends RecyclerViewAdapter<DayData.DataBean.ResultLis
             double accuracy = model.getDayResultList().get(j).getAccuracy();
             yValues.add((float) accuracy * 100);
         }
+
         if (yValues.size() == 0) {
 
 //            yValues.add(0, (float) 0);
@@ -241,7 +240,6 @@ public class DayRvAdapter extends RecyclerViewAdapter<DayData.DataBean.ResultLis
         }
         lineChartManager1.setDescription("");
         lineChartManager1.setXAxis(xValues.size()-1>10?xValues.size()-1:10, 0, xValues.size()-1>10?xValues.size()-1:10);
-
 //          axisLeft.setAxisMaxValue( ); //最大值
 //        setLineChart(lineChart1, model);
     }

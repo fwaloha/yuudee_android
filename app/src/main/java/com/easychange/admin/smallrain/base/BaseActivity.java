@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -17,6 +18,7 @@ import com.easychange.admin.smallrain.R;
 import com.easychange.admin.smallrain.utils.NetWorkUtils;
 import com.githang.statusbar.StatusBarCompat;
 import com.qlzx.mylibrary.util.ToastUtil;
+import com.umeng.analytics.MobclickAgent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,7 +62,25 @@ public abstract class BaseActivity extends AppCompatActivity {
         //ViewHelp.getInstance().setTopPadding(getWindow().getDecorView(),getStatusBarHeight());
         StatusBarCompat.setStatusBarColor(this,getResources().getColor(R.color.dialog_bg_color) );
     }
+    /*
+     * 必须调用 MobclickAgent.onResume() 和 MobclickAgent.onPause()方法，
+     * 才能够保证获取正确的新增用户、活跃用户、启动次数、使用时长等基本数据。
+     * 这两个方法是用来统计应用时长的(也就是Session时长,当然还包括一些其他功能)
+     * MobclickAgent.onPageStart() 和 MobclickAgent.onPageEnd() 方法是用来统计页面跳转的
+     * 在仅有Activity的应用中，SDK 自动帮助开发者调用了上面的方法，并把Activity 类名作为页面名称统计。
+     * 但是在包含fragment的程序中我们希望统计更详细的页面，所以需要自己调用方法做更详细的统计。
+     * */
+    @Override
+    protected void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+    }
     @Override
     protected void onDestroy() {
         super.onDestroy();

@@ -170,7 +170,6 @@ public class LineChartManager {
 //        }
 //        lineDataSet.setColor(color);//线条颜色
 
-
         ArrayList<ILineDataSet> dataSets = new ArrayList<>();
         dataSets.add(lineDataSet);
         LineData data = new LineData(dataSets);

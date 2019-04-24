@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -114,7 +115,8 @@ public class RecordsFragment extends BaseFragment {
                 @Override
                 public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                     TranningRecordBean.StatisticsListBean statisticsListBean = titleAdapter.getItem(position);
-                    if (statisticsListBean.getRate1() == 0&&statisticsListBean.getLearningTime() ==0) {
+                    Log.i("liubiao", "onItemClick: "+statisticsListBean.getLearningTime());
+                    if (statisticsListBean.getLearningTime() ==0) {
                         switch (statisticsListBean.getModule()) {
                             case "1":
                                 ToastUtil.showToast(getActivity(), "学习进度暂无数据!");

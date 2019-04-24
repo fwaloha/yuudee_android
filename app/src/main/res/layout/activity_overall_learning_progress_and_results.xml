@@ -72,7 +72,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
-                    android:text="学习时长与PCDI量表分关系"
+                    android:text="学习时长与语言评估问卷量表分关系"
 
                     />
             </LinearLayout>
@@ -237,7 +237,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="7dp"
-                    android:text="总测试进度与PCDI量表分的关系"
+                    android:text="总测试进度与语言评估问卷量表分的关系"
 
                     />
             </LinearLayout>

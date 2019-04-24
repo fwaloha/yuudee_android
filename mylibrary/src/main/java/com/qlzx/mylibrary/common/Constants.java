@@ -18,9 +18,10 @@ public class Constants {
      */
 
 
-  //  public static final String HOST="http://47.95.244.242/XiaoyudiApplication/";       // 测试服务器域名
 
-    public static final String HOST="https://api.xiaoyudi.org/";       // 正式服务器域名
+     public static final String HOST="http://47.95.244.242/XiaoyudiApplication/";       // 测试服务器域名
+
+    //public static final String HOST="https://api.xiaoyudi.org/";       // 正式服务器域名
 
 
 //     public static final String HOST="https://fudai.rr-xcx.com/api/";       // 测试服务器域名

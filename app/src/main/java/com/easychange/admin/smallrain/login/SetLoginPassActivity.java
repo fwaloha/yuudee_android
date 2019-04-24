@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.easychange.admin.smallrain.R;
 import com.easychange.admin.smallrain.activity.CompleteRegisterActivity;

@@ -2,6 +2,7 @@ package com.easychange.admin.smallrain.utils;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 
 import com.easychange.admin.smallrain.MyApplication;
 import com.easychange.admin.smallrain.activity.HomeActivity;
@@ -20,10 +21,8 @@ public class GoToLoginActivityUtils {
      * @param mContext
      */
     public static void tokenFailureLoginOut(Activity mContext) {
-
         PreferencesHelper preferencesHelper = new PreferencesHelper(MyApplication.getApplication());
         preferencesHelper.saveToken("");
-
         Intent intent = new Intent(MyApplication.getApplication(), HomeActivity.class);
         intent.putExtra("isCloseOtherActivity",true);
         mContext.startActivity(intent);
