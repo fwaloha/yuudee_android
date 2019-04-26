@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'jacoco-android'
 
 android {
     compileSdkVersion 28
@@ -39,6 +40,9 @@ android {
             minifyEnabled false
             shrinkResources false
             signingConfig signingConfigs.config
+
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
             testCoverageEnabled true
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -51,6 +55,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
     }
 }
 
@@ -116,6 +124,14 @@ dependencies {
     androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.2'
     // Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
     androidTestCompile 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+
+    compile support.appCompat
+
+    testCompile assertJCore
+    testCompile junit
+
+    androidTestCompile supportTest.espressoCore
+    androidTestCompile supportTest.rules
     /* debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
                     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
                     // Optional, if you use support library fragments:
