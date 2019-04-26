@@ -51,7 +51,7 @@ public class MyApplication extends Application {
     //    public List<String> currentDongci80 = new ArrayList();
     public String[] currentDongci80 = new String[4];
 
-    public String currentDongci80cishu = "";
+//    public String currentDongci80cishu = "";
     public DongciGuoGuan dongciGuoGuan;
     public MingciGuoGuan mingciGuoGuan;
     public JuzifenjieGuoGuan juzifenjieGuoGuan;
