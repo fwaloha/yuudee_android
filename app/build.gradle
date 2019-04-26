@@ -34,14 +34,6 @@ android {
             storePassword "775521"
         }
     }
-//    signingConfigs {
-//        release {
-//            storeFile file("xiaoyudi.jks")
-//            storePassword "123456"
-//            keyAlias "123456"
-//            keyPassword "123456"
-//        }
-//    }
     buildTypes {
         debug {
             minifyEnabled false
