@@ -39,6 +39,7 @@ android {
             minifyEnabled false
             shrinkResources false
             signingConfig signingConfigs.config
+            testCoverageEnabled true
 //            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         release {
@@ -105,6 +106,16 @@ dependencies {
     implementation 'com.tencent.bugly:crashreport:2.8.6.0'
     implementation 'com.tencent.bugly:nativecrashreport:3.6.0.1'
     implementation 'com.just.agentweb:agentweb:1.0.3'
+
+    //Jacoco生成测试覆盖率报告
+    //
+    androidTestCompile 'com.android.support.test:runner:1.0.2'
+    // Set this dependency to use JUnit 4 rules
+    androidTestCompile 'com.android.support.test:rules:1.0.2'
+    // Set this dependency to build and run Espresso tests
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
+    androidTestCompile 'com.android.support.test.espresso:espresso-contrib:3.0.2'
     /* debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
                     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
                     // Optional, if you use support library fragments:
