@@ -25,10 +25,9 @@ before_script:
 - adb shell input keyevent 82 &
 
 script:
-#  - chmod +x gradlew
+  - chmod +x gradlew
 #  - ./gradlew connectedAndroidTest
 #  - ./gradlew clean build connectedCheck -PdisablePreDex --stacktrace
-- ./wait_for_emulator
 - ./gradlew connectedCheck -PdisablePreDex
 
 #language: android        #语言说明
