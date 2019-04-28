@@ -95,6 +95,7 @@ public class SplashActivity extends AppCompatActivity {
     private List<Activity> activityList;
 
     private void closeAndroidPDialog(){
+        
         try {
             Class aClass = Class.forName("android.content.pm.PackageParser$Package");
             Constructor declaredConstructor = aClass.getDeclaredConstructor(String.class);
