@@ -10,7 +10,8 @@ env:
   - ANDROID_API_LEVEL=28
   - ANDROID_BUILD_TOOLS_VERSION=28.0.3
   - ANDROID_EMU_API_LEVEL=28
-  - ANDROID_ABI=armeabi-v7a
+#  - ANDROID_ABI=armeabi-v7a
+  - ANDROID_ABI=google_apis/armeabi-v7a
   - ADB_INSTALL_TIMEOUT=20 # minutes (2 minutes by default)
   - QEMU_AUDIO_DRV=none # Remove audio
 cache:
@@ -27,7 +28,8 @@ android:
   - android-$ANDROID_API_LEVEL
   - android-$ANDROID_EMU_API_LEVEL
   - extra-android-support
-  - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
+#  - sys-img-$ANDROID_ABI-google_apis-$ANDROID_EMU_API_LEVEL
+  - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
 before_script:
 - echo -e "Host github.com\n\tHostName github.com\n\tUser git\n\tIdentityFile ~/.ssh/id_travisci\n" >> ~/.ssh/config
 - echo no | android create avd --force -n test -t android-$ANDROID_EMU_API_LEVEL --abi google_apis/$ANDROID_ABI
