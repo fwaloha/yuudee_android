@@ -25,10 +25,15 @@ before_script:
 - adb shell input keyevent 82 &
 
 script:
-  - chmod +x gradlew
+#  - chmod +x gradlew
 #  - ./gradlew connectedAndroidTest
 #  - ./gradlew clean build connectedCheck -PdisablePreDex --stacktrace
-- ./gradlew connectedCheck -PdisablePreDex
+#- ./gradlew connectedCheck -PdisablePreDex
+  - chmod +x gradlew
+  - ./gradlew clean installDebug
+  - ./gradlew check
+  - ./gradlew testDebugUnitTest
+  - ./gradlew connectedDebugAndroidTest
 
 #language: android        #语言说明
 #jdk: oraclejdk8          #jdk版本
