@@ -16,7 +16,6 @@ android:
   components:
   - platform-tools
   - tools
-  - tools
   - build-tools-$ANDROID_BUILD_TOOLS_VERSION
   - android-$ANDROID_BUILD_TOOLS_VERSION
   # For Google Maps API v1
@@ -30,7 +29,6 @@ android:
   - extra-android-m2repository
   # Specify at least one system image,
 #  - sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
-  - sys-img-armeabi-v7a-google_apis-28
   - sys-img-armeabi-v7a-google_apis-28
 
 before_script:
