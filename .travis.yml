@@ -30,7 +30,11 @@ before_install:
 # Only run tests on the main two OneBusAway brand flavors and the YRT Google flavor
 script:
 - chmod +x gradlew
-- ./gradlew assembleObaGoogleDebug assembleObaAmazonDebug assembleYrtGoogleDebug -PdisablePreDex
+#- ./gradlew assembleObaGoogleDebug assembleObaAmazonDebug assembleYrtGoogleDebug -PdisablePreDex
+- ./gradlew clean installDebug
+- ./gradlew check
+- ./gradlew testDebugUnitTest
+- ./gradlew connectedDebugAndroidTest
 
 notifications:
   webhooks:
