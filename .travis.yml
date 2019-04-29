@@ -25,10 +25,10 @@ before_script:
 - adb shell input keyevent 82 &
 
 script:
-  - chmod +x gradlew
-  - ./gradlew connectedAndroidTest
+#  - chmod +x gradlew
+#  - ./gradlew connectedAndroidTest
 #  - ./gradlew clean build connectedCheck -PdisablePreDex --stacktrace
-#  - ./gradlew connectedCheck -PdisablePreDex
+#- ./gradlew connectedCheck -PdisablePreDex
 
 #  - chmod +x gradlew
 #  - ./gradlew clean installDebug
@@ -36,13 +36,14 @@ script:
 #  - ./gradlew testDebugUnitTest
 #  - ./gradlew connectedDebugAndroidTest
 
-##  - ./gradlew build jacocoTestReport assembleAndroidTest
-#  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
-#  - emulator -avd test -no-skin -no-audio -no-window &
-#  - android-wait-for-emulator
-#  - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
-##  - ./gradlew connectedCheck
-#  - ./gradlew connectedAndroidTest
+#  - ./gradlew build jacocoTestReport assembleAndroidTest
+  - chmod +x gradlew
+  - echo no | android create avd --force -n test -t android-22 --abi armeabi-v7a
+  - emulator -avd test -no-skin -no-audio -no-window &
+  - android-wait-for-emulator
+  - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
+#  - ./gradlew connectedCheck
+  - ./gradlew connectedAndroidTest
 
 #language: android        #语言说明
 #jdk: oraclejdk8          #jdk版本
