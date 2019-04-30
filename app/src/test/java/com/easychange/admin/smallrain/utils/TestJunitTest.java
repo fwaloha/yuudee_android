@@ -18,6 +18,6 @@ public class TestJunitTest {
     }
 
     @Test
-    public void test1() {
+    public void test() {
     }
 }

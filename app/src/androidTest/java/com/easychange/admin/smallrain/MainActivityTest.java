@@ -33,5 +33,16 @@ public class MainActivityTest {
                 "initStatusBar");
         FuncUtils.funcInvoke(mActivityRule.getActivity(),
                 initStatusBar);
+
+        Method setVisible = FuncUtils.funcMethod(MainActivity.class,
+                "setVisible", Integer.class);
+        FuncUtils.funcInvoke(mActivityRule.getActivity(),
+                setVisible, 1);
+        FuncUtils.funcInvoke(mActivityRule.getActivity(),
+                setVisible, 2);
+        FuncUtils.funcInvoke(mActivityRule.getActivity(),
+                setVisible, 3);
+        FuncUtils.funcInvoke(mActivityRule.getActivity(),
+                setVisible, 4);
     }
 }
