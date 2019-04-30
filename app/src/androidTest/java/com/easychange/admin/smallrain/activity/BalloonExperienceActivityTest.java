@@ -2,7 +2,6 @@ package com.easychange.admin.smallrain.activity;
 
 import android.support.test.rule.ActivityTestRule;
 
-import com.easychange.admin.smallrain.entity.NetChangeBean;
 import com.easychange.admin.smallrain.testN.FuncUtils;
 
 import org.junit.Rule;
@@ -23,7 +22,7 @@ public class BalloonExperienceActivityTest {
         Method showIsRemindDialog = FuncUtils.funcMethod(BalloonExperienceActivity.class,
                 "showIsRemindDialog", String.class, String.class, String.class);
         FuncUtils.funcInvoke(mActivityRule.getActivity(),
-                showIsRemindDialog, "dd", "ddd", "dddd");
+                showIsRemindDialog, "dd", "ddd", "ddd");
 
         Method showFamilyDialog = FuncUtils.funcMethod(BalloonExperienceActivity.class,
                 "showFamilyDialog");
