@@ -1,20 +1,18 @@
 package com.easychange.admin.smallrain;
 
 import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
 
-import com.easychange.admin.smallrain.utils.TestJunit;
+import com.easychange.admin.smallrain.testN.FuncUtils;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
-@RunWith(AndroidJUnit4.class)
+import java.lang.reflect.Method;
+
 public class MainActivityTest {
 
-    //默认在测试之前启动该Activity
     @Rule
     public ActivityTestRule<MainActivity> mActivityRule =
             new ActivityTestRule<>(MainActivity.class);
@@ -28,7 +26,12 @@ public class MainActivityTest {
     }
 
     @Test
-    public void test1() {
-        new TestJunit().test();
+    public void test() {
+        MainActivity.startActivityWithParmeter(mActivityRule.getActivity(), 1);
+
+        Method initStatusBar = FuncUtils.funcMethod(MainActivity.class,
+                "initStatusBar");
+        FuncUtils.funcInvoke(mActivityRule.getActivity(),
+                initStatusBar);
     }
 }

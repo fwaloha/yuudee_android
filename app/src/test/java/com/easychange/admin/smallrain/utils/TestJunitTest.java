@@ -4,8 +4,6 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 /**
  * gradle clean connectedAndroidTest
  */
@@ -21,6 +19,5 @@ public class TestJunitTest {
 
     @Test
     public void test1() {
-        new TestJunit().test();
     }
 }
