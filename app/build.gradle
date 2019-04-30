@@ -134,6 +134,11 @@ dependencies {
     // Espresso-contrib for DatePicker, RecyclerView, Drawer actions, Accessibility checks, CountingIdlingResource
     androidTestCompile 'com.android.support.test.espresso:espresso-contrib:3.0.2'
 
+    // required if you want to use Mockito for unit tests
+    testCompile 'org.mockito:mockito-core:2.7.22'
+    // required if you want to use Mockito for Android tests
+    androidTestCompile 'org.mockito:mockito-android:2.7.22'
+
     compile support.appCompat
 
     testCompile assertJCore

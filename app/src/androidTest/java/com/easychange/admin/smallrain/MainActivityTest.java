@@ -5,6 +5,7 @@ import android.support.test.rule.ActivityTestRule;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
+import org.junit.Test;
 
 public class MainActivityTest {
 
@@ -20,6 +21,5 @@ public class MainActivityTest {
     @After
     public void tearDown() throws Exception {
     }
-
 
 }
