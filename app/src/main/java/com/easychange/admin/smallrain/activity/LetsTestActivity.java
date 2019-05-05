@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -51,12 +52,12 @@ public class LetsTestActivity extends BaseActivity {
                 } else {
                     String type = getIntent().getStringExtra("type");
 //
-                    if (type.equals("mingciyiyi")) {
+                    if (TextUtils.equals(type,"mingciyiyi")) {
 
                         Intent intent = new Intent(LetsTestActivity.this, MingciIdeaOneActivity.class);
                         startActivity(intent);
                         finish();
-                    } else if (type.equals("mingci_yiyan")) {
+                    } else if (TextUtils.equals(type,"mingci_yiyan")) {
 //                        Intent intent = new Intent(LetsTestActivity.this, MingciTestActivity.class);
 //                        startActivity(intent);
                         MingciBean model = (MingciBean) getIntent().getSerializableExtra("model");
@@ -66,7 +67,7 @@ public class LetsTestActivity extends BaseActivity {
                         intent.putExtra("model", model);
                         startActivity(intent);
                         finish();
-                    } else if (type.equals("mingci")) {
+                    } else if (TextUtils.equals(type,"mingci")) {
 //                        Intent intent = new Intent(LetsTestActivity.this, MingciTestActivity.class);
 //                        startActivity(intent);
                         MingciBean model = (MingciBean) getIntent().getSerializableExtra("model");
@@ -76,7 +77,7 @@ public class LetsTestActivity extends BaseActivity {
                         intent.putExtra("model", model);
                         startActivity(intent);
                         finish();
-                    } else if (type.equals("dongci")) {
+                    } else if (TextUtils.equals(type,"dongci")) {
 //                        Intent intent = new Intent(LetsTestActivity.this, DongciTestActivity.class);
 //                        startActivity(intent);
                         Intent intent = new Intent(LetsTestActivity.this, DongciTestOneActivity.class);
@@ -87,7 +88,7 @@ public class LetsTestActivity extends BaseActivity {
 
                         startActivity(intent);
                         finish();
-                    } else if (type.equals("juzi")) {
+                    } else if (TextUtils.equals(type,"juzi")) {
 //                        Intent intent = new Intent(LetsTestActivity.this, JuZiExerciseActivityFourClick.class);
 //                        startActivity(intent);
                         Intent intent = new Intent(LetsTestActivity.this, JuZiChengZuCiShiLianActivity.class);
@@ -97,7 +98,7 @@ public class LetsTestActivity extends BaseActivity {
                         intent.putExtra("model", model);
 
                         startActivity(intent);
-                    } else if (type.equals("juzifenjie")) {
+                    } else if (TextUtils.equals(type,"juzifenjie")) {
 //                        Intent intent = new Intent(LetsTestActivity.this, JuZiExerciseActivityFourClick.class);
 //                        startActivity(intent);
                         Intent intent = new Intent(LetsTestActivity.this, JuZiFeiJieCiShiActivityFourClick.class);

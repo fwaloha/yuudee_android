@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,21 +46,21 @@ public class LetsTestToTrainActivity extends BaseActivity {
                 } else {
                     String type = getIntent().getStringExtra("type");
 //
-                    if (type.equals("mingci")) {
+                    if (TextUtils.equals(type,"mingci")) {
 
                         Intent intent = new Intent(LetsTestToTrainActivity.this, MingciOneActivity.class);
                         startActivity(intent);
                         finish();
-                    } else if (type.equals("dongci_test_train")) {
+                    } else if (TextUtils.equals(type,"dongci_test_train")) {
                         Intent intent = new Intent(LetsTestToTrainActivity.this, DongciTrainOneActivity.class);
 ////                                    intent.putExtra("position", 9);
                         startActivity(intent);
                         finish();
-                    } else if (type.equals("juzichengzu")) {
+                    } else if (TextUtils.equals(type,"juzichengzu")) {
                         Intent intent = new Intent(LetsTestToTrainActivity.this, JuZiChengZuXunLianActivity.class);
                         startActivity(intent);
                         finish();
-                    } else if (type.equals("juzifenjie")) {
+                    } else if (TextUtils.equals(type,"juzifenjie")) {
 //
                         Intent intent = new Intent(LetsTestToTrainActivity.this, JuZiFeiJieXunLianActivityFourClick.class);
 ////                                    intent.putExtra("position", 9);
