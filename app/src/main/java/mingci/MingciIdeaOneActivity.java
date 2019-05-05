@@ -149,7 +149,6 @@ public class MingciIdeaOneActivity extends BaseActivity implements View.OnClickL
         public void handleMessage(Message msg) {
             if (msg.what == 1) {
                 double obj = (double) msg.obj;
-
                 cb.setProgress((float) obj * currentLoopTime);
                 currentLoopTime++;
             } else if (msg.what == 2) {
@@ -219,7 +218,7 @@ public class MingciIdeaOneActivity extends BaseActivity implements View.OnClickL
      * @param currentClick
      * @param loopTime     循环次数
      */
-    private void startTime(final int currentClick, int loopTime, double loopRate) {
+    public void startTime(final int currentClick, int loopTime, double loopRate) {
         if (timer == null) {
             timer = new Timer();
         }
@@ -251,7 +250,7 @@ public class MingciIdeaOneActivity extends BaseActivity implements View.OnClickL
         timer.schedule(timerTask, 0, executeInterval);//1000ms执行一次
     }
 
-    private void stopTime() {
+    public void stopTime() {
         if (timer != null) {
             timer.cancel();
             timer.purge();
@@ -711,7 +710,7 @@ public class MingciIdeaOneActivity extends BaseActivity implements View.OnClickL
         }
     }
 
-    private void setDataIntoView() {
+    public void setDataIntoView() {
         nounSenseBean = model.getNounSense().get(position);
 
         coursewareId = nounSenseBean.getId();
@@ -822,7 +821,7 @@ public class MingciIdeaOneActivity extends BaseActivity implements View.OnClickL
     }
 
 
-    private void initClick() {
+    public void initClick() {
         //点击事件
         for (int i = 0; i < llClickLayout.getChildCount(); i++) {
             final View childAt = llClickLayout.getChildAt(i);//第几个
@@ -1728,6 +1727,5 @@ public class MingciIdeaOneActivity extends BaseActivity implements View.OnClickL
             }
         }
     };
-
 
 }
