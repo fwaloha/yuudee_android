@@ -83,6 +83,9 @@ script:
   - adb shell setprop dalvik.vm.dexopt-flags v=n,o=v
   - ./gradlew connectedAndroidTest
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
 #language: android        #语言说明
 #jdk: oraclejdk8          #jdk版本
 #sudo: required           #权限要求

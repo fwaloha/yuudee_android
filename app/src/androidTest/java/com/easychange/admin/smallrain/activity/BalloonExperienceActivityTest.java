@@ -1,14 +1,17 @@
 package com.easychange.admin.smallrain.activity;
 
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
 
 import com.easychange.admin.smallrain.testN.FuncUtils;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.lang.reflect.Method;
 
+@RunWith(AndroidJUnit4.class)
 public class BalloonExperienceActivityTest {
     //默认在测试之前启动该Activity
     @Rule

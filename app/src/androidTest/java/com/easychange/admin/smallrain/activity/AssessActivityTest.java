@@ -1,7 +1,12 @@
 package com.easychange.admin.smallrain.activity;
 
+import android.support.test.espresso.Espresso;
+import android.support.test.espresso.action.ViewActions;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
+import android.support.test.runner.AndroidJUnit4;
 
+import com.easychange.admin.smallrain.R;
 import com.easychange.admin.smallrain.testN.FuncUtils;
 import com.qlzx.mylibrary.bean.BaseBean;
 
@@ -9,11 +14,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.lang.reflect.Method;
 
 import bean.AssementReviewBean;
 
+@RunWith(AndroidJUnit4.class)
 public class AssessActivityTest {
 
     //默认在测试之前启动该Activity
@@ -54,7 +61,7 @@ public class AssessActivityTest {
 //                closeSoftKeyboard());
 
         // 获取特定按钮执行点击事件
-//        Espresso.onView(ViewMatchers.withId(R.id.iv_back)).perform(ViewActions.click());
+        Espresso.onView(ViewMatchers.withId(R.id.iv_back)).perform(ViewActions.click());
 //        Espresso.onView(ViewMatchers.withId(R.id.btn_abc)).perform(ViewActions.click());
 //        Espresso.onView(ViewMatchers.withId(R.id.btn_pcdi)).perform(ViewActions.click());
 
